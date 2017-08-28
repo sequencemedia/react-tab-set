@@ -1,6 +1,6 @@
 {
   "name": "react-tab-set",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A React Tab Set component",
   "main": "./index.js",
   "author": {
@@ -17,13 +17,16 @@
     "build": "babel src -d lib",
     "prepublish": "npm run build",
     "lint": "eslint src",
-    "build:watch": "babel src -d lib -w"
+    "build:watch": "babel src -d lib -w",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "standard": {
     "parser": "babel-eslint"
   },
   "dependencies": {
-    "react": "^15.6.1"
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -44,6 +47,7 @@
     "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-react": "^7.3.0",
-    "eslint-plugin-standard": "^3.0.1"
+    "eslint-plugin-standard": "^3.0.1",
+    "@storybook/react": "^3.2.8"
   }
 }

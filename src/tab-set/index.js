@@ -1,5 +1,6 @@
 import React, { Component, Children, cloneElement } from 'react'
 import PropTypes from 'prop-types'
+import uuid from 'uuid'
 
 import isTabPanel from './is-tab-panel'
 import isTabGroup from './is-tab-group'
@@ -96,12 +97,12 @@ export default class TabSet extends Component {
   }
 }
 
+TabSet.defaultProps = {
+  defaultTab: uuid.v4(),
+  children: []
+}
+
 TabSet.propTypes = {
   defaultTab: PropTypes.string.isRequired,
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.arrayOf(
-      PropTypes.element
-    )
-  ]).isRequired
+  children: PropTypes.node.isRequired
 }

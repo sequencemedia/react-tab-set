@@ -1,5 +1,6 @@
 import React, { Children, cloneElement, Component } from 'react'
 import PropTypes from 'prop-types'
+import uuid from 'uuid'
 
 import isTab from './is-tab'
 
@@ -65,17 +66,18 @@ export default class TabGroup extends Component {
   }
 }
 
+/*
+ *  The selected tab default doesn't have to be unique/a uuid, but using the 'uuid' package reduces
+ *  the likelihood that the default has the same value as a tab
+ */
 TabGroup.defaultProps = {
-  onTabSelect: () => {}
+  onTabSelect: () => {},
+  selectedTab: uuid.v4(),
+  children: []
 }
 
 TabGroup.propTypes = {
-  onTabSelect: PropTypes.func,
+  onTabSelect: PropTypes.func.isRequired,
   selectedTab: PropTypes.string.isRequired,
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.arrayOf(
-      PropTypes.element
-    )
-  ]).isRequired
+  children: PropTypes.node.isRequired
 }
