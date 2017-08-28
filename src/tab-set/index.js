@@ -20,7 +20,7 @@ export default class TabSet extends Component {
 
   shouldComponentUpdate (props, state) {
     return (
-      (state.selectedTab !== this.state.selectedTab)
+      state.selectedTab !== this.state.selectedTab
     )
   }
 
