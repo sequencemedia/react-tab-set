@@ -67,8 +67,8 @@ export default class TabGroup extends Component {
 }
 
 /*
- *  The selected tab default doesn't have to be unique/a uuid, but using the 'uuid' package reduces
- *  the likelihood that the default has the same value as a tab
+ *  The tab and selected tab defaults don't have to be unique/a uuid, but using the 'uuid' package
+ *  reduces the likelihood that they have the same value as an implemented tab
  */
 TabGroup.defaultProps = {
   onTabSelect: () => {},
