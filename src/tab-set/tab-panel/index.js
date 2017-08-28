@@ -38,9 +38,7 @@ export default class TabPanel extends React.Component {
  */
 TabPanel.defaultProps = {
   tab: uuid.v4(),
-  selectedTab: uuid.v4(),
-  children: [],
-  render: () => {}
+  selectedTab: uuid.v4()
 }
 
 TabPanel.propTypes = {
