@@ -1,9 +1,7 @@
 import React, { Children, cloneElement, Component } from 'react'
 import PropTypes from 'prop-types'
 
-import {
-  isTab
-} from '~/'
+import isTab from './is-tab'
 
 export default class TabGroup extends Component {
   handleTabClick = (tab) => {

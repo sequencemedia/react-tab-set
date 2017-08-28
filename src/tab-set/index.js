@@ -1,10 +1,8 @@
 import React, { Component, Children, cloneElement } from 'react'
 import PropTypes from 'prop-types'
 
-import {
-  isTabGroup,
-  isTabPanel
-} from '~/'
+import isTabPanel from './is-tab-panel'
+import isTabGroup from './is-tab-group'
 
 export default class TabSet extends Component {
   constructor (props) {

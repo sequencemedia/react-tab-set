@@ -1,10 +1,16 @@
-import { TabGroup } from './tab-set/tab-group'
-import { Tab } from './tab-set/tab-group/tab'
-import { TabPanel } from './tab-set/tab-panel'
+import isTabGroup from './tab-set/is-tab-group'
+import isTab from './tab-set/tab-group/is-tab'
+import isTabPanel from './tab-set/is-tab-panel'
 
-export const isTabGroup = (type) => type === TabGroup
-export const isTab = (type) => type === Tab
-export const isTabPanel = (type) => type === TabPanel
+import TabGroup from './tab-set/tab-group'
+import Tab from './tab-set/tab-group/tab'
+import TabPanel from './tab-set/tab-panel'
+
+export {
+  isTabGroup,
+  isTab,
+  isTabPanel
+}
 
 export {
   TabGroup,
