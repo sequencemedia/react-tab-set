@@ -3,6 +3,16 @@ import PropTypes from 'prop-types'
 import uuid from 'uuid'
 
 export default class TabPanel extends React.Component {
+  shouldComponentUpdate (props) {
+    if (props.render instanceof Function) return true
+
+    return (
+      props.tab !== this.props.tab ||
+      props.selectedTab !== this.props.selectedTab ||
+      props.children !== this.props.children
+    )
+  }
+
   renderPanel () {
     const {
       render,

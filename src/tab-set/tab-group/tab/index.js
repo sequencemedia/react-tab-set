@@ -3,6 +3,14 @@ import PropTypes from 'prop-types'
 import uuid from 'uuid'
 
 export default class Tab extends Component {
+  shouldComponentUpdate (props) {
+    return (
+      props.tab !== this.props.tab ||
+      props.selectedTab !== this.props.selectedTab ||
+      props.children !== this.props.children
+    )
+  }
+
   handleClick = () => {
     const { tab, onTabClick } = this.props
 

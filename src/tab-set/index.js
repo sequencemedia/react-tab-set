@@ -18,8 +18,13 @@ export default class TabSet extends Component {
     }
   }
 
-  shouldComponentUpdate (props, { selectedTab }) {
+  componentWillReceiveProps ({ defaultTab: selectedTab }) {
+    this.setState({ selectedTab })
+  }
+
+  shouldComponentUpdate ({ children }, { selectedTab }) {
     return (
+      children !== this.props.children ||
       selectedTab !== this.state.selectedTab
     )
   }

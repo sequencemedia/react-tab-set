@@ -5,6 +5,13 @@ import uuid from 'uuid'
 import isTab from './is-tab'
 
 export default class TabGroup extends Component {
+  shouldComponentUpdate (props) {
+    return (
+      props.selectedTab !== this.props.selectedTab ||
+      props.children !== this.props.children
+    )
+  }
+
   handleTabClick = (tab) => {
     const { onTabSelect } = this.props
 
