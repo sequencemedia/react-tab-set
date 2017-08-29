@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import uuid from 'uuid'
 
-export default class TabPanel extends React.Component {
+export default class TabPanel extends Component {
   shouldComponentUpdate (props) {
     if (props.render instanceof Function) return true
 

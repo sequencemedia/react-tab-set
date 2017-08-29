@@ -1,4 +1,4 @@
-import React, { Children, cloneElement, Component } from 'react'
+import React, { Component, Children, cloneElement } from 'react'
 import PropTypes from 'prop-types'
 import uuid from 'uuid'
 
