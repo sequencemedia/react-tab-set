@@ -22,10 +22,10 @@ export default class TabSet extends Component {
     this.setState({ selectedTab })
   }
 
-  shouldComponentUpdate ({ children }, { selectedTab }) {
+  shouldComponentUpdate (props, state) {
     return (
-      children !== this.props.children ||
-      selectedTab !== this.state.selectedTab
+      props.children !== this.props.children ||
+      state.selectedTab !== this.state.selectedTab
     )
   }
 
