@@ -86,7 +86,7 @@ RenderParentComponent.propTypes = {
 }
 
 storiesOf('TabSet component', module)
-  .add('With (static) default props', () => (
+  .add('With default props', () => (
     <TabSet defaultTab='one'>
       <TabGroup>
         <Tab tab='one'>
@@ -104,7 +104,7 @@ storiesOf('TabSet component', module)
       </TabPanel>
     </TabSet>
   ))
-  .add('With (render) default props', () => (
+  .add('With default props and conditional render', () => (
     <TabSet defaultTab='one'>
       <TabGroup>
         <Tab tab='one'>
@@ -122,9 +122,9 @@ storiesOf('TabSet component', module)
       }} />
     </TabSet>
   ))
-  .add('With (static) parent component, default props and conditional render', () => (
+  .add('With parent component and default props', () => (
     <StaticParentComponent n={0} />
   ))
-  .add('With (render) parent component, default props and conditional render', () => (
+  .add('With parent component, default props, and conditional render', () => (
     <RenderParentComponent n={0} />
   ))
