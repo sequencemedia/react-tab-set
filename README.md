@@ -3,7 +3,7 @@
 A `React` component for rendering tabbed content.
 
 ```
-<TabSet defaultTab='one'>
+<TabSet selectedTab='one'>
 	<TabGroup>
 		<Tab tab='one'>
 			One
@@ -27,7 +27,7 @@ The `<TabSet />` component manages state, and applies additional props to the `<
 
 Rendered as a `<div />` the `<TabSet />` component can contain or be contained by an valid children or parent.
 
-A `<TabSet />` has one prop, `defaultTab`. The value of that prop should be the same as the `tab` prop of a `<Tab />` and its paired `<TabPanel />`.
+A `<TabSet />` has one prop, `selectedTab`. The value of that prop should be the same as the `tab` prop of a `<Tab />` and its paired `<TabPanel />`.
 
 ## _TabGroup_ and _Tab_
 
@@ -45,7 +45,7 @@ A `<TabPanel />` is a container for content.
 
 Content can be declared either as children or as the return of a function assigned to its prop `render`.
 
-If your component extends `PureComponent` or is presentational, you might prefer to declare content as children. 
+If your component extends `PureComponent` or is presentational, you might prefer to declare content as children.
 
 Otherwise, you might prefer to assign a function to the `render` prop, so that rendering is deferred until the tab is selected.
 
@@ -57,7 +57,7 @@ Otherwise, you might prefer to assign a function to the `render` prop, so that r
 			Content
 		</div>
 	</TabPanel>
-``` 
+```
 
 ### Content as return
 
@@ -65,9 +65,9 @@ Otherwise, you might prefer to assign a function to the `render` prop, so that r
 	<TabPanel tab='identifier' render={() => (
 		<div className='content'>
 			Content
-		</div>	
+		</div>
 	)} />
-``` 
+```
 
 (Notice that in this case there is no closing tag; if there were, children would be ignored in favour of the return from the function, anyway.)
 
@@ -76,7 +76,7 @@ Otherwise, you might prefer to assign a function to the `render` prop, so that r
 A `<TabPanel />` component can contain or be contained by an valid children or parent, just like a `<TabSet />`.
 
 ```
-<TabSet defaultTab='one'>
+<TabSet selectedTab='one'>
 	{ /*
 		Etc.
 	*/ }
@@ -99,9 +99,9 @@ Similarly, they can be declared in any combination.
 
 ## Demonstrating _React.TabSet_
 
-[Example `Storybooks` are available on GitHub](https://github.com/sequencemedia/React.TabSet). 
+[Example `Storybooks` are available on GitHub](https://github.com/sequencemedia/React.TabSet).
 
-Clone the repository, then: 
+Clone the repository, then:
 
 ```
 npm install

@@ -10,6 +10,12 @@
     "transform-class-properties",
     "transform-object-rest-spread",
     "transform-react-jsx",
-    "root-import"
+    [
+      "module-resolver", {
+        "alias": {
+          "react-tab-set": "./src"
+        }
+      }
+    ]
   ]
 }

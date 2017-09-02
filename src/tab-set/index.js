@@ -10,7 +10,7 @@ export default class TabSet extends Component {
     super(props)
 
     const {
-      defaultTab: selectedTab
+      selectedTab
     } = props
 
     this.state = {
@@ -18,19 +18,32 @@ export default class TabSet extends Component {
     }
   }
 
-  componentWillReceiveProps ({ defaultTab: selectedTab }) {
-    this.setState({ selectedTab })
+  componentWillReceiveProps ({ selectedTab }) {
+    if (selectedTab !== this.props.selectedTab) {
+      this.setState({ selectedTab })
+    }
   }
 
-  shouldComponentUpdate (props, state) {
+  shouldComponentUpdate ({ children }, state) {
+    if (children !== this.props.children) return true
+
+    const {
+      selectedTab
+    } = state
+
     return (
-      props.children !== this.props.children ||
-      state.selectedTab !== this.state.selectedTab
+      selectedTab !== this.state.selectedTab
     )
   }
 
   handleTabSelect = (selectedTab) => {
-    this.setState({ selectedTab })
+    if (selectedTab !== this.state.selectedTab) {
+      const { onChange } = this.props
+
+      this.setState({ selectedTab })
+
+      onChange(selectedTab)
+    }
   }
 
   mapChildren (children, selectedTab) {
@@ -102,11 +115,13 @@ export default class TabSet extends Component {
 }
 
 TabSet.defaultProps = {
-  defaultTab: uuid.v4(),
+  onChange: () => {},
+  selectedTab: uuid.v4(),
   children: []
 }
 
 TabSet.propTypes = {
-  defaultTab: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
+  selectedTab: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired
 }

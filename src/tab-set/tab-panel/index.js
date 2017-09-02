@@ -36,9 +36,11 @@ export default class TabPanel extends Component {
       selectedTab
     } = this.props
 
-    return (tab === selectedTab)
-      ? this.renderPanel()
-      : null
+    if (tab === selectedTab) {
+      return this.renderPanel()
+    }
+
+    return null
   }
 }
 
