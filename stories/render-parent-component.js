@@ -58,8 +58,8 @@ export default class RenderParentComponent extends React.Component {
 }
 
 RenderParentComponent.defaultProps = {
-  onChange: Function.prototype,
-  onClick: Function.prototype
+  onChange: () => {},
+  onClick: () => {}
 }
 
 RenderParentComponent.propTypes = {
