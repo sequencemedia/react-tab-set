@@ -5,9 +5,9 @@ import uuid from 'uuid'
 export default class Tab extends Component {
   shouldComponentUpdate (props) {
     return (
+      props.children !== this.props.children ||
       props.tab !== this.props.tab ||
-      props.selectedTab !== this.props.selectedTab ||
-      props.children !== this.props.children
+      props.selectedTab !== this.props.selectedTab
     )
   }
 
@@ -45,14 +45,14 @@ export default class Tab extends Component {
  */
 Tab.defaultProps = {
   onTabClick: () => {},
+  children: [],
   tab: uuid.v4(),
-  selectedTab: uuid.v4(),
-  children: []
+  selectedTab: uuid.v4()
 }
 
 Tab.propTypes = {
   onTabClick: PropTypes.func.isRequired,
+  children: PropTypes.element.isRequired,
   tab: PropTypes.string.isRequired,
-  selectedTab: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired
+  selectedTab: PropTypes.string.isRequired
 }

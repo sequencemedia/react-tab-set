@@ -9,49 +9,61 @@ import TabSet, {
   TabPanel
 } from 'react-tab-set'
 
+import ParentComponent from './parent-component'
 import StaticParentComponent from './static-parent-component'
 import RenderParentComponent from './render-parent-component'
 
+const handleChange = action('change')
+const handleClick = action('click')
+
 storiesOf('TabSet component', module)
-  .add('With default props', () => (
-    <TabSet selectedTab='one' onChange={action('change')}>
-      <TabGroup>
-        <Tab tab='one'>
-          One
-        </Tab>
-        <Tab tab='two'>
-          Two
-        </Tab>
-      </TabGroup>
-      <TabPanel tab='one'>
-        One
-      </TabPanel>
-      <TabPanel tab='two'>
-        Two
-      </TabPanel>
-    </TabSet>
-  ))
-  .add('With default props and conditional render', () => (
-    <TabSet selectedTab='one' onChange={action('change')}>
-      <TabGroup>
-        <Tab tab='one'>
-          One
-        </Tab>
-        <Tab tab='two'>
-          Two
-        </Tab>
-      </TabGroup>
-      <TabPanel tab='one' render={() => {
-        return 'One'
-      }} />
-      <TabPanel tab='two' render={() => {
-        return 'Two'
-      }} />
-    </TabSet>
-  ))
+  .add('With default props', () => {
+    return (
+      <ParentComponent onClick={handleClick} onChange={handleChange}>
+        <TabSet>
+          <TabGroup>
+            <Tab tab='one'>
+              One
+            </Tab>
+            <Tab tab='two'>
+              Two
+            </Tab>
+          </TabGroup>
+          <TabPanel tab='one'>
+            One
+          </TabPanel>
+          <TabPanel tab='two'>
+            Two
+          </TabPanel>
+        </TabSet>
+      </ParentComponent>
+    )
+  })
+  .add('With default props and conditional render', () => {
+    return (
+      <ParentComponent onClick={handleClick} onChange={handleChange}>
+        <TabSet>
+          <TabGroup>
+            <Tab tab='one'>
+              One
+            </Tab>
+            <Tab tab='two'>
+              Two
+            </Tab>
+          </TabGroup>
+          <TabPanel tab='one' render={() => {
+            return 'One'
+          }} />
+          <TabPanel tab='two' render={() => {
+            return 'Two'
+          }} />
+        </TabSet>
+      </ParentComponent>
+    )
+  })
   .add('With parent component and default props', () => (
-    <StaticParentComponent n={0} onChange={action('change')} />
+    <StaticParentComponent onClick={handleClick} onChange={handleChange} />
   ))
   .add('With parent component, default props, and conditional render', () => (
-    <RenderParentComponent n={0} onChange={action('change')} />
+    <RenderParentComponent onClick={handleClick} onChange={handleChange} />
   ))

@@ -1,4 +1,4 @@
-# React.TabSet
+# react-tab-set
 
 A `React` component for rendering tabbed content.
 
@@ -97,9 +97,9 @@ A `<TabPanel />` component can contain or be contained by an valid children or p
 
 Similarly, they can be declared in any combination.
 
-## Demonstrating _React.TabSet_
+## Demonstrating _react-tab-set_
 
-[Example `Storybooks` are available on GitHub](https://github.com/sequencemedia/React.TabSet).
+[Example `Storybooks` are available on GitHub](https://github.com/sequencemedia/react-tab-set).
 
 Clone the repository, then:
 

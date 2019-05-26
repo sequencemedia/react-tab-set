@@ -6,38 +6,15 @@ import isTabPanel from './is-tab-panel'
 import isTabGroup from './is-tab-group'
 
 export default class TabSet extends Component {
-  constructor (props) {
-    super(props)
-
-    const {
-      selectedTab
-    } = props
-
-    this.state = {
-      selectedTab
-    }
-  }
-
-  componentWillReceiveProps ({ selectedTab }) {
-    if (selectedTab !== this.props.selectedTab) {
-      this.setState({ selectedTab })
-    }
-  }
-
-  shouldComponentUpdate ({ children }, state) {
-    if (children !== this.props.children) return true
-
-    const {
-      selectedTab
-    } = state
-
+  shouldComponentUpdate (props) {
     return (
-      selectedTab !== this.state.selectedTab
+      props.children !== this.props.children ||
+      props.selectedTab !== this.props.selectedTab
     )
   }
 
   handleTabSelect = (selectedTab) => {
-    if (selectedTab !== this.state.selectedTab) {
+    if (selectedTab !== this.props.selectedTab) {
       const { onChange } = this.props
 
       this.setState({ selectedTab })
@@ -95,12 +72,9 @@ export default class TabSet extends Component {
 
   getChildren () {
     const {
-      children
-    } = this.props
-
-    const {
+      children,
       selectedTab
-    } = this.state
+    } = this.props
 
     return this.mapChildren(children, selectedTab)
   }

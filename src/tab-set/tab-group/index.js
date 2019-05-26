@@ -7,8 +7,8 @@ import isTab from './is-tab'
 export default class TabGroup extends Component {
   shouldComponentUpdate (props) {
     return (
-      props.selectedTab !== this.props.selectedTab ||
-      props.children !== this.props.children
+      props.children !== this.props.children ||
+      props.selectedTab !== this.props.selectedTab
     )
   }
 
@@ -79,12 +79,12 @@ export default class TabGroup extends Component {
  */
 TabGroup.defaultProps = {
   onTabSelect: () => {},
-  selectedTab: uuid.v4(),
-  children: []
+  children: [],
+  selectedTab: uuid.v4()
 }
 
 TabGroup.propTypes = {
   onTabSelect: PropTypes.func.isRequired,
-  selectedTab: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired
+  children: PropTypes.element.isRequired,
+  selectedTab: PropTypes.string.isRequired
 }

@@ -10,46 +10,51 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/sequencemedia/React.TabSet.git"
+    "url": "git://github.com/sequencemedia/react-tab-set.git"
   },
   "license": "MIT",
   "scripts": {
     "build": "babel src -d lib",
-    "prepublish": "npm run build",
-    "lint": "eslint src",
-    "build:watch": "babel src -d lib -w",
+    "build:watch": "npm run build -- -w",
+    "prepublishOnly": "npm run build",
+    "lint": "eslint *.js src stories",
+    "lint:fix": "npm run lint -- --fix",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
-  },
-  "standard": {
-    "parser": "babel-eslint"
+    "build-storybook": "build-storybook",
+    "pre-commit": "npm run lint && npm run build && git add lib"
   },
   "dependencies": {
-    "prop-types": "^15.6.0",
-    "react": "^16.0.0"
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^3.2.12",
-    "@storybook/addon-links": "^3.2.12",
-    "@storybook/react": "^3.2.12",
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-eslint": "^8.0.1",
-    "babel-loader": "^7.1.2",
-    "babel-plugin-module-resolver": "^2.7.1",
-    "babel-plugin-transform-react-jsx": "^6.24.1",
-    "babel-preset-env": "^1.6.0",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
-    "babel-preset-stage-1": "^6.24.1",
-    "eslint": "^4.8.0",
-    "eslint-config-standard": "^10.2.1",
-    "eslint-import-resolver-babel-module": "^3.0.0",
-    "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-node": "^5.2.0",
-    "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-react": "^7.4.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "react-dom": "^16.0.0"
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-proposal-export-default-from": "^7.2.0",
+    "@babel/plugin-proposal-export-namespace-from": "^7.2.0",
+    "@babel/preset-react": "^7.0.0",
+    "@storybook/addon-actions": "^5.0.11",
+    "@storybook/addon-links": "^5.0.11",
+    "@storybook/react": "^5.0.11",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-module-resolver": "^3.2.0",
+    "core-js": "^3.1.2",
+    "eslint": "^5.16.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-import-resolver-babel-module": "^5.1.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-node": "^9.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-react": "^7.13.0",
+    "eslint-plugin-standard": "^4.0.0",
+    "husky": "^2.3.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run pre-commit"
+    }
   }
 }

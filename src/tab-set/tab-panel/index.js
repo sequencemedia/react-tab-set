@@ -7,9 +7,9 @@ export default class TabPanel extends Component {
     if (props.render instanceof Function) return true
 
     return (
+      props.children !== this.props.children ||
       props.tab !== this.props.tab ||
-      props.selectedTab !== this.props.selectedTab ||
-      props.children !== this.props.children
+      props.selectedTab !== this.props.selectedTab
     )
   }
 
@@ -54,8 +54,8 @@ TabPanel.defaultProps = {
 }
 
 TabPanel.propTypes = {
+  children: PropTypes.element,
   tab: PropTypes.string.isRequired,
   selectedTab: PropTypes.string.isRequired,
-  children: PropTypes.node,
   render: PropTypes.func
 }

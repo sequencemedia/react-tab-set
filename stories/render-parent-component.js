@@ -9,19 +9,34 @@ import TabSet, {
 
 export default class RenderParentComponent extends React.Component {
   state = {
-    n: this.props.n
+    t: 'one',
+    n: 0
   }
 
-  handleClick = () => this.setState({ n: this.state.n + 1 })
+  handleChange = (t) => {
+    this.setState({ t })
+
+    const { onChange } = this.props
+
+    onChange(t)
+  }
+
+  handleClick = () => {
+    const n = this.state.n + 1
+
+    this.setState({ n })
+
+    const { onClick } = this.props
+
+    onClick(n)
+  }
 
   render () {
-    const { onChange } = this.props
-    const { n } = this.state
+    const { t, n } = this.state
 
     return (
       <div onClick={this.handleClick}>
-        Number {n} number
-        <TabSet selectedTab='one' onChange={onChange}>
+        <TabSet selectedTab={t} onChange={this.handleChange}>
           <TabGroup>
             <Tab tab='one'>
               One {n}
@@ -42,7 +57,12 @@ export default class RenderParentComponent extends React.Component {
   }
 }
 
+RenderParentComponent.defaultProps = {
+  onChange: Function.prototype,
+  onClick: Function.prototype
+}
+
 RenderParentComponent.propTypes = {
   onChange: PropTypes.func,
-  n: PropTypes.number.isRequired
+  onClick: PropTypes.func
 }
