@@ -2,22 +2,22 @@
 
 A `React` component for rendering tabbed content.
 
-```
+```jsx
 <TabSet selectedTab='one'>
-	<TabGroup>
-		<Tab tab='one'>
-			One
-		</Tab>
-		<Tab tab='two'>
-			Two
-		</Tab>
-	</TabGroup>
-	<TabPanel tab='one'>
-		One
-	</TabPanel>
-	<TabPanel tab='two'>
-		Two
-	</TabPanel>
+  <TabGroup>
+    <Tab tab='one'>
+      One
+    </Tab>
+    <Tab tab='two'>
+      Two
+    </Tab>
+  </TabGroup>
+  <TabPanel tab='one'>
+    One
+  </TabPanel>
+  <TabPanel tab='two'>
+    Two
+  </TabPanel>
 </TabSet>
 ```
 
@@ -51,22 +51,22 @@ Otherwise, you might prefer to assign a function to the `render` prop, so that r
 
 ### Content as children
 
-```
-	<TabPanel tab='identifier'>
-		<div className='content'>
-			Content
-		</div>
-	</TabPanel>
+```jsx
+  <TabPanel tab='identifier'>
+    <div className='content'>
+      Content
+    </div>
+  </TabPanel>
 ```
 
 ### Content as return
 
-```
-	<TabPanel tab='identifier' render={() => (
-		<div className='content'>
-			Content
-		</div>
-	)} />
+```jsx
+  <TabPanel tab='identifier' render={() => (
+    <div className='content'>
+      Content
+    </div>
+  )} />
 ```
 
 (Notice that in this case there is no closing tag; if there were, children would be ignored in favour of the return from the function, anyway.)
@@ -75,23 +75,23 @@ Otherwise, you might prefer to assign a function to the `render` prop, so that r
 
 A `<TabPanel />` component can contain or be contained by an valid children or parent, just like a `<TabSet />`.
 
-```
+```jsx
 <TabSet selectedTab='one'>
-	{ /*
-		Etc.
-	*/ }
-	<div className='a'>
-		<div className='b'>
-			<div className='c'>
-				<TabPanel tab='one'>
-					One
-				</TabPanel>
-			</div>
-		</div>
-	</div>
-	<TabPanel tab='two' render={() => {
-		return 'Two'
-	}} />
+  { /*
+    Etc.
+  */ }
+  <div className='a'>
+    <div className='b'>
+      <div className='c'>
+        <TabPanel tab='one'>
+          One
+        </TabPanel>
+      </div>
+    </div>
+  </div>
+  <TabPanel tab='two' render={() => {
+    return 'Two'
+  }} />
 </TabSet>
 ```
 
@@ -103,7 +103,7 @@ Similarly, they can be declared in any combination.
 
 Clone the repository, then:
 
-```
+```bash
 npm install
 npm run storybook
 ```
