@@ -1,19 +1,35 @@
 import React, { Component, Children, cloneElement } from 'react'
-import PropTypes from 'prop-types'
 import uuid from 'uuid'
 
 import isTabPanel from './is-tab-panel'
 import isTabGroup from './is-tab-group'
 
-export default class TabSet extends Component {
-  shouldComponentUpdate (props) {
+interface TabSetProps {
+  onChange: (selectedTab: string) => void
+  selectedTab: string
+  children: JSX.Element | JSX.Element[]
+}
+
+export default class TabSet extends Component<TabSetProps> {
+  /*
+   *  The selected tab default does not have to be a uuid, but a uuid
+   *  reduces the likelihood that this default has the same value as
+   *  an implemented tab
+   */
+  static defaultProps = {
+    onChange: () => {},
+    selectedTab: uuid.v4(),
+    children: []
+  }
+
+  shouldComponentUpdate (props: TabSetProps): boolean {
     return (
       props.children !== this.props.children ||
       props.selectedTab !== this.props.selectedTab
     )
   }
 
-  handleTabSelect = (selectedTab) => {
+  handleTabSelect = (selectedTab: string): void => {
     if (selectedTab !== this.props.selectedTab) {
       const { onChange } = this.props
 
@@ -23,7 +39,7 @@ export default class TabSet extends Component {
     }
   }
 
-  mapChildren (children, selectedTab) {
+  mapChildren (children: JSX.Element | JSX.Element[], selectedTab: string): JSX.Element[] {
     return Children.map(children, (child) => {
       const { type } = child
 
@@ -70,7 +86,7 @@ export default class TabSet extends Component {
     })
   }
 
-  getChildren () {
+  getChildren (): JSX.Element[] {
     const {
       children,
       selectedTab
@@ -79,23 +95,11 @@ export default class TabSet extends Component {
     return this.mapChildren(children, selectedTab)
   }
 
-  render () {
+  render (): JSX.Element {
     return (
       <div className='tab-set'>
         {this.getChildren()}
       </div>
     )
   }
-}
-
-TabSet.defaultProps = {
-  onChange: () => {},
-  selectedTab: uuid.v4(),
-  children: []
-}
-
-TabSet.propTypes = {
-  onChange: PropTypes.func,
-  selectedTab: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired
 }

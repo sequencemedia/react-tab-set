@@ -6,6 +6,8 @@ import TabGroup from './tab-set/tab-group'
 import Tab from './tab-set/tab-group/tab'
 import TabPanel from './tab-set/tab-panel'
 
+import TabSet from './tab-set'
+
 export {
   isTabGroup,
   isTab,
@@ -18,4 +20,4 @@ export {
   TabPanel
 }
 
-export default from './tab-set'
+export default TabSet // from './tab-set'

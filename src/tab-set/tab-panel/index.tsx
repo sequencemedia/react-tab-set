@@ -1,9 +1,25 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import uuid from 'uuid'
 
-export default class TabPanel extends Component {
-  shouldComponentUpdate (props) {
+interface TabPanelProps {
+  children: JSX.Element | JSX.Element[]
+  tab: string
+  selectedTab: string
+  render: () => JSX.Element | JSX.Element[] | null
+}
+
+export default class TabPanel extends Component<TabPanelProps> {
+  /*
+   *  The tab and selected tab defaults do not have to be a uuid, but a uuid
+   *  reduces the likelihood that this default has the same value as
+   *  an implemented tab
+   */
+  static defaultProps = {
+    tab: uuid.v4(),
+    selectedTab: uuid.v4()
+  }
+
+  shouldComponentUpdate (props: TabPanelProps): boolean {
     if (props.render instanceof Function) return true
 
     return (
@@ -13,7 +29,7 @@ export default class TabPanel extends Component {
     )
   }
 
-  renderPanel () {
+  renderPanel (): JSX.Element | null {
     const {
       render,
       children = render()
@@ -30,7 +46,7 @@ export default class TabPanel extends Component {
     return null
   }
 
-  render () {
+  render (): JSX.Element | null {
     const {
       tab,
       selectedTab
@@ -42,20 +58,4 @@ export default class TabPanel extends Component {
 
     return null
   }
-}
-
-/*
- *  The tab and selected tab defaults don't have to be unique/a uuid, but using the 'uuid' package
- *  reduces the likelihood that they have the same value as an implemented tab
- */
-TabPanel.defaultProps = {
-  tab: uuid.v4(),
-  selectedTab: uuid.v4()
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.element,
-  tab: PropTypes.string.isRequired,
-  selectedTab: PropTypes.string.isRequired,
-  render: PropTypes.func
 }

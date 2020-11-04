@@ -1,24 +1,40 @@
 import React, { Component, Children, cloneElement } from 'react'
-import PropTypes from 'prop-types'
 import uuid from 'uuid'
 
 import isTab from './is-tab'
 
-export default class TabGroup extends Component {
-  shouldComponentUpdate (props) {
+interface TabGroupProps {
+  onTabSelect: (selectedTab: string) => void
+  children: JSX.Element | JSX.Element[]
+  selectedTab: string
+}
+
+export default class TabGroup extends Component<TabGroupProps> {
+  /*
+   *  The selected tab default does not have to be a uuid, but a uuid
+   *  reduces the likelihood that this default has the same value as
+   *  an implemented tab
+   */
+  static defaultProps = {
+    onTabSelect: () => {},
+    children: [],
+    selectedTab: uuid.v4()
+  }
+
+  shouldComponentUpdate (props: TabGroupProps): boolean {
     return (
       props.children !== this.props.children ||
       props.selectedTab !== this.props.selectedTab
     )
   }
 
-  handleTabClick = (tab) => {
+  handleTabClick = (tab: string): void => {
     const { onTabSelect } = this.props
 
     onTabSelect(tab)
   }
 
-  mapChildren (children, selectedTab) {
+  mapChildren (children: JSX.Element | JSX.Element[], selectedTab: string): JSX.Element[] {
     return Children.map(children, (child) => {
       const { type } = child
 
@@ -55,7 +71,7 @@ export default class TabGroup extends Component {
     })
   }
 
-  getChildren () {
+  getChildren (): JSX.Element[] {
     const {
       children,
       selectedTab
@@ -64,27 +80,11 @@ export default class TabGroup extends Component {
     return this.mapChildren(children, selectedTab)
   }
 
-  render () {
+  render (): JSX.Element {
     return (
       <ul className='tab-group'>
         {this.getChildren()}
       </ul>
     )
   }
-}
-
-/*
- *  The tab and selected tab defaults don't have to be unique/a uuid, but using the 'uuid' package
- *  reduces the likelihood that they have the same value as an implemented tab
- */
-TabGroup.defaultProps = {
-  onTabSelect: () => {},
-  children: [],
-  selectedTab: uuid.v4()
-}
-
-TabGroup.propTypes = {
-  onTabSelect: PropTypes.func.isRequired,
-  children: PropTypes.element.isRequired,
-  selectedTab: PropTypes.string.isRequired
 }

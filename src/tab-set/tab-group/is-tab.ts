@@ -1,5 +1,5 @@
 import Tab from './tab'
 
-const isTab = (c) => c === Tab
+const isTab = (c: any): c is Tab => c === Tab
 
 export default isTab

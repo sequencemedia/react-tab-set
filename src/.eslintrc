@@ -1,0 +1,34 @@
+{
+  "extends": [
+    "standard-with-typescript",
+    "plugin:react/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "tsconfig.json",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": [
+    "@typescript-eslint/eslint-plugin",
+    "react"
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "overrides": [
+    {
+      "files": [
+        "tab-set/index.tsx",
+        "tab-set/tab-group/index.tsx",
+        "tab-set/tab-panel/index.tsx"
+      ],
+      "rules": {
+        "@typescript-eslint/strict-boolean-expressions": "off"
+      }
+    }
+  ]
+}
