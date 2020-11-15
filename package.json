@@ -14,13 +14,13 @@
     "url": "git://github.com/sequencemedia/react-tab-set.git"
   },
   "scripts": {
+    "prepublishOnly": "cross-env NODE_ENV=production npm run build",
+    "prebuild": "npm run clean",
     "build": "npm run babel",
     "build:watch": "npm run babel:watch",
-    "babel": "babel src -d lib",
+    "babel": "babel src -d lib --extensions .ts,.tsx",
     "babel:watch": "npm run babel -- -w",
     "clean": "rimraf lib",
-    "prepublishOnly": "npm run build",
-    "prebuild": "npm run clean",
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
     "storybook": "start-storybook -p 6006",
@@ -28,8 +28,7 @@
     "pre-commit": "npm run lint && npm run build && git add lib"
   },
   "dependencies": {
-    "prop-types": "^15.7.2",
-    "react": "^17.0.1"
+    "uuid": "^8.3.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
@@ -48,6 +47,7 @@
     "@typescript-eslint/parser": "^4.7.0",
     "babel-plugin-module-resolver": "^4.0.0",
     "core-js": "^3.7.0",
+    "cross-env": "^7.0.2",
     "eslint": "^7.13.0",
     "eslint-config-standard": "^16.0.1",
     "eslint-config-standard-with-typescript": "^19.0.1",
@@ -58,6 +58,9 @@
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-standard": "^4.1.0",
     "husky": "^4.3.0",
+    "prop-types": "15.7.2",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
     "typescript": "^4.0.5"
   },
   "husky": {

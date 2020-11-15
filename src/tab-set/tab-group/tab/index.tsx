@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import uuid from 'uuid'
+import {
+  v4
+} from 'uuid'
 
 interface TabProps {
   onTabClick: (tab: string) => void
@@ -17,8 +19,8 @@ export default class Tab extends Component<TabProps> {
   static defaultProps = {
     onTabClick: () => {},
     children: [],
-    tab: uuid.v4(),
-    selectedTab: uuid.v4()
+    tab: v4(),
+    selectedTab: v4()
   }
 
   shouldComponentUpdate (props: TabProps): boolean {

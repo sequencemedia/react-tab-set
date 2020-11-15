@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import uuid from 'uuid'
+import {
+  v4
+} from 'uuid'
 
 interface TabPanelProps {
   children: JSX.Element | JSX.Element[]
@@ -15,8 +17,8 @@ export default class TabPanel extends Component<TabPanelProps> {
    *  an implemented tab
    */
   static defaultProps = {
-    tab: uuid.v4(),
-    selectedTab: uuid.v4()
+    tab: v4(),
+    selectedTab: v4()
   }
 
   shouldComponentUpdate (props: TabPanelProps): boolean {

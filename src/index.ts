@@ -20,4 +20,4 @@ export {
   TabPanel
 }
 
-export default TabSet // from './tab-set'
+export default TabSet

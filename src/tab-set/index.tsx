@@ -1,5 +1,7 @@
 import React, { Component, Children, cloneElement } from 'react'
-import uuid from 'uuid'
+import {
+  v4
+} from 'uuid'
 
 import isTabPanel from './is-tab-panel'
 import isTabGroup from './is-tab-group'
@@ -18,7 +20,7 @@ export default class TabSet extends Component<TabSetProps> {
    */
   static defaultProps = {
     onChange: () => {},
-    selectedTab: uuid.v4(),
+    selectedTab: v4(),
     children: []
   }
 
