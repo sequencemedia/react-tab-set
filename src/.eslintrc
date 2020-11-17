@@ -14,11 +14,6 @@
     "@typescript-eslint/eslint-plugin",
     "react"
   ],
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
-  },
   "overrides": [
     {
       "files": [
@@ -30,5 +25,10 @@
         "@typescript-eslint/strict-boolean-expressions": "off"
       }
     }
-  ]
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
 }
