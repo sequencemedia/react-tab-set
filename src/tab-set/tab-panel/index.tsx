@@ -4,10 +4,10 @@ import {
 } from 'uuid'
 
 interface TabPanelProps {
-  children: JSX.Element | JSX.Element[]
+  children: JSX.Element | JSX.Element[] | string | number | boolean | undefined | null
   tab: string
   selectedTab: string
-  render: () => JSX.Element | JSX.Element[] | null
+  render: () => JSX.Element | JSX.Element[] | string | number | boolean | undefined | null
 }
 
 export default class TabPanel extends Component<TabPanelProps> {

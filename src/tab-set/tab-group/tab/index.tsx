@@ -18,9 +18,9 @@ export default class Tab extends Component<TabProps> {
    */
   static defaultProps = {
     onTabClick: () => {},
-    children: [],
     tab: v4(),
-    selectedTab: v4()
+    selectedTab: v4(),
+    children: []
   }
 
   shouldComponentUpdate (props: TabProps): boolean {

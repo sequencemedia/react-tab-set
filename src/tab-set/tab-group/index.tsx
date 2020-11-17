@@ -19,8 +19,8 @@ export default class TabGroup extends Component<TabGroupProps> {
    */
   static defaultProps = {
     onTabSelect: () => {},
-    children: [],
-    selectedTab: v4()
+    selectedTab: v4(),
+    children: []
   }
 
   shouldComponentUpdate (props: TabGroupProps): boolean {
