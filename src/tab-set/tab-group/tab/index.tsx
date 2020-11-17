@@ -3,9 +3,9 @@ import {
   v4
 } from 'uuid'
 
-interface TabProps {
+export interface TabProps {
   onTabClick: (tab: string) => void
-  children: JSX.Element | JSX.Element[]
+  children: JSX.Element | JSX.Element[] | string | number | boolean
   tab: string
   selectedTab: string
 }

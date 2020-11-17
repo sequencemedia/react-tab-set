@@ -11,12 +11,16 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "paths": {
+      "react-tab-set": [
+        "src"
+      ],
       "react-tab-set/*": [
         "src/*"
       ]
     }
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "stories/**/*"
   ]
 }

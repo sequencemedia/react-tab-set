@@ -7,7 +7,7 @@ interface TabPanelProps {
   children: JSX.Element | JSX.Element[] | string | number | boolean | undefined | null
   tab: string
   selectedTab: string
-  render: () => JSX.Element | JSX.Element[] | string | number | boolean | undefined | null
+  render?: () => JSX.Element | JSX.Element[] | string | number | boolean | undefined | null
 }
 
 export default class TabPanel extends Component<TabPanelProps> {
@@ -33,7 +33,7 @@ export default class TabPanel extends Component<TabPanelProps> {
 
   renderPanel (): JSX.Element | null {
     const {
-      render,
+      render = () => null,
       children = render()
     } = this.props
 

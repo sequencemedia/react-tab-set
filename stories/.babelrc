@@ -1,5 +1,6 @@
 {
   "presets": [
+    "@babel/typescript",
     [
       "@babel/env", {
         "targets": {
@@ -19,6 +20,7 @@
     "@babel/react"
   ],
   "plugins": [
+    "@babel/transform-typescript",
     "@babel/proposal-export-default-from",
     "@babel/proposal-export-namespace-from",
     [

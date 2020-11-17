@@ -6,7 +6,7 @@ import {
 import isTabPanel from './is-tab-panel'
 import isTabGroup from './is-tab-group'
 
-interface TabSetProps {
+export interface TabSetProps {
   onChange: (selectedTab: string) => void
   selectedTab: string
   children: JSX.Element | JSX.Element[]
