@@ -45,7 +45,7 @@
     "@storybook/addon-knobs": "^6.1.21",
     "@storybook/addons": "^6.1.21",
     "@storybook/react": "^6.1.21",
-    "@types/react": "^17.0.2",
+    "@types/react": "^17.0.3",
     "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^4.16.1",
     "@typescript-eslint/parser": "^4.16.1",
