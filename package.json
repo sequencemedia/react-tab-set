@@ -50,7 +50,7 @@
     "@typescript-eslint/eslint-plugin": "^4.25.0",
     "@typescript-eslint/parser": "^4.25.0",
     "babel-plugin-module-resolver": "^4.1.0",
-    "core-js": "^3.13.0",
+    "core-js": "^3.13.1",
     "cross-env": "^7.0.3",
     "eslint": "^7.27.0",
     "eslint-config-standard-with-typescript": "^20.0.0",
