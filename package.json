@@ -1,6 +1,6 @@
 {
   "name": "react-tab-set",
-  "version": "1.1.275",
+  "version": "1.1.276",
   "description": "A React Tab Set component",
   "main": "./index.js",
   "author": {
@@ -46,12 +46,12 @@
     "@types/uuid": "^9.0.0",
     "@typescript-eslint/eslint-plugin": "^5.48.2",
     "@typescript-eslint/parser": "^5.48.2",
-    "babel-plugin-module-resolver": "4.1.0",
+    "babel-plugin-module-resolver": "^5.0.0",
     "core-js": "^3.27.1",
     "cross-env": "^7.0.3",
     "eslint": "^8.32.0",
     "eslint-config-standard": "^17.0.0",
-    "eslint-config-standard-with-typescript": "^27.0.1",
+    "eslint-config-standard-with-typescript": "^29.0.0",
     "eslint-import-resolver-babel-module": "^5.3.2",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-node": "^11.1.0",
