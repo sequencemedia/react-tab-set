@@ -1,9 +1,9 @@
 import React from 'react'
 import { action } from '@storybook/addon-actions'
 import { withKnobs, select, text } from '@storybook/addon-knobs'
-import { Story, Meta } from '@storybook/react'
-
-import TabSet, { TabSetProps } from 'react-tab-set/tab-set'
+import type { Story, Meta } from '@storybook/react'
+import type { TabSetProps } from 'react-tab-set/tab-set'
+import TabSet from 'react-tab-set/tab-set'
 import {
   TabGroup,
   Tab,
