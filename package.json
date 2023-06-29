@@ -61,6 +61,6 @@
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "rimraf": "^5.0.1",
-    "typescript": "^5.1.5"
+    "typescript": "^5.1.6"
   }
 }
