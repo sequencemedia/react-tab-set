@@ -9,6 +9,7 @@
     "isolatedModules": true,
     "noImplicitAny": true,
     "allowSyntheticDefaultImports": true,
+    "allowImportingTsExtensions": true,
     "baseUrl": ".",
     "paths": {
       "react-tab-set": [
