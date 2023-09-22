@@ -1,23 +1,35 @@
 {
   "extends": [
-    "standard-with-typescript",
-    "plugin:react/recommended"
+    "standard",
+    "plugin:react/recommended",
+    "plugin:storybook/recommended"
   ],
-  "parser": "@typescript-eslint/parser",
+  "parser": "@babel/eslint-parser",
   "parserOptions": {
-    "project": "tsconfig.json",
     "ecmaFeatures": {
       "jsx": true
     }
   },
   "plugins": [
-    "@typescript-eslint/eslint-plugin",
     "react"
   ],
   "rules": {
-    "no-use-before-define": "off",
-    "@typescript-eslint/no-use-before-define": [
-      "off"
+    "react/display-name": "off",
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "jsx-quotes": [
+      "error",
+      "prefer-single"
+    ],
+    "react/jsx-indent": [
+      "error",
+      2,
+      {
+        "checkAttributes": true,
+        "indentLogicalExpressions": true
+      }
     ]
   },
   "settings": {

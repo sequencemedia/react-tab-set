@@ -37,7 +37,7 @@ export default class TabPanel extends Component<TabPanelProps> {
       children = render()
     } = this.props
 
-    if (children) {
+    if (children) { // eslint-disable-line @typescript-eslint/strict-boolean-expressions
       return (
         <div className='tab-panel'>
           {children}

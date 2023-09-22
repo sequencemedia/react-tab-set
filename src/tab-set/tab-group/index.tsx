@@ -3,7 +3,7 @@ import {
   v4
 } from 'uuid'
 
-import isTab from './is-tab'
+import isTab from './is-tab.mts'
 
 interface TabGroupProps {
   onTabSelect: (selectedTab: string) => void
@@ -40,7 +40,7 @@ export default class TabGroup extends Component<TabGroupProps> {
     return Children.map(children, (child) => {
       const { type } = child
 
-      if (type) {
+      if (type) { // eslint-disable-line @typescript-eslint/strict-boolean-expressions
         const { props } = child
 
         if (isTab(type)) {
@@ -58,7 +58,7 @@ export default class TabGroup extends Component<TabGroupProps> {
           children
         } = props
 
-        if (children) {
+        if (children) { // eslint-disable-line @typescript-eslint/strict-boolean-expressions
           return cloneElement(
             child,
             {

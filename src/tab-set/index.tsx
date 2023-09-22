@@ -2,9 +2,12 @@ import React, { Component, Children, cloneElement } from 'react'
 import {
   v4
 } from 'uuid'
+import debug from 'debug'
 
-import isTabPanel from './is-tab-panel'
-import isTabGroup from './is-tab-group'
+import isTabPanel from './is-tab-panel.mts'
+import isTabGroup from './is-tab-group.mts'
+
+const error = debug('react-tab-set/tab-set')
 
 export interface TabSetProps {
   onChange: (selectedTab: string) => void
@@ -12,7 +15,23 @@ export interface TabSetProps {
   children: JSX.Element | JSX.Element[]
 }
 
-export default class TabSet extends Component<TabSetProps> {
+export interface TabSetState {
+  selectedTab: string
+}
+
+export default class TabSet extends Component<TabSetProps, TabSetState> {
+  constructor (props: TabSetProps) {
+    super(props)
+
+    const {
+      selectedTab
+    } = props
+
+    this.state = {
+      selectedTab
+    }
+  }
+
   /*
    *  The selected tab default does not have to be a uuid, but a uuid
    *  reduces the likelihood that this default has the same value as
@@ -24,20 +43,24 @@ export default class TabSet extends Component<TabSetProps> {
     children: []
   }
 
-  shouldComponentUpdate (props: TabSetProps): boolean {
+  shouldComponentUpdate (props: TabSetProps, state: TabSetState): boolean {
     return (
       props.children !== this.props.children ||
-      props.selectedTab !== this.props.selectedTab
+      state.selectedTab !== this.state.selectedTab
     )
   }
 
   handleTabSelect = (selectedTab: string): void => {
-    if (selectedTab !== this.props.selectedTab) {
+    if (selectedTab !== this.state.selectedTab) {
       const { onChange } = this.props
 
-      this.setState({ selectedTab })
-
-      onChange(selectedTab)
+      this.setState({ selectedTab }, () => {
+        try {
+          onChange(selectedTab)
+        } catch {
+          error('Error `onChange`')
+        }
+      })
     }
   }
 
@@ -45,7 +68,7 @@ export default class TabSet extends Component<TabSetProps> {
     return Children.map(children, (child) => {
       const { type } = child
 
-      if (type) {
+      if (type) { // eslint-disable-line @typescript-eslint/strict-boolean-expressions
         const { props } = child
 
         if (isTabGroup(type)) {
@@ -73,7 +96,7 @@ export default class TabSet extends Component<TabSetProps> {
           children
         } = props
 
-        if (children) {
+        if (children) { // eslint-disable-line @typescript-eslint/strict-boolean-expressions
           return cloneElement(
             child,
             {
@@ -90,9 +113,12 @@ export default class TabSet extends Component<TabSetProps> {
 
   getChildren (): JSX.Element[] {
     const {
-      children,
-      selectedTab
+      children
     } = this.props
+
+    const {
+      selectedTab
+    } = this.state
 
     return this.mapChildren(children, selectedTab)
   }

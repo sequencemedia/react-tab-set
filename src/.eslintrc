@@ -11,24 +11,21 @@
     }
   },
   "plugins": [
-    "@typescript-eslint/eslint-plugin",
+    "@typescript-eslint",
     "react"
   ],
-  "rules": {
-    "no-use-before-define": "off",
-    "@typescript-eslint/no-use-before-define": [
-      "off"
-    ]
-  },
   "overrides": [
     {
       "files": [
-        "tab-set/index.tsx",
-        "tab-set/tab-group/index.tsx",
-        "tab-set/tab-panel/index.tsx"
+        "*.mjs",
+        "*.cjs",
+        "*.jsx"
       ],
-      "rules": {
-        "@typescript-eslint/strict-boolean-expressions": "off"
+      "extends": "standard",
+      "parser": "@babel/eslint-parser",
+      "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
       }
     }
   ],
