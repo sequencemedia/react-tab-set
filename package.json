@@ -15,13 +15,6 @@
     "url": "git://github.com/sequencemedia/react-tab-set.git"
   },
   "scripts": {
-    "prepublishOnly": "cross-env NODE_ENV=production npm run build",
-    "prebuild": "npm run clean",
-    "build": "npm run babel",
-    "build:watch": "npm run babel:watch",
-    "babel": "babel src -d lib --extensions .ts,.tsx",
-    "babel:watch": "npm run babel -- -w",
-    "clean": "rimraf lib",
     "lint": "eslint . --ext .mjs,.cjs,.mts,.cts,.tsx",
     "lint:fix": "npm run lint -- --fix",
     "prepare": "husky install",
@@ -65,7 +58,6 @@
     "prop-types": "15.7.2",
     "react": "16.14.0",
     "react-dom": "16.14.0",
-    "rimraf": "^5.0.1",
     "storybook": "^7.4.4",
     "typescript": "^5.2.2"
   },
