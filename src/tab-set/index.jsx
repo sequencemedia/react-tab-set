@@ -1,47 +1,61 @@
 import React, { Component, Children, cloneElement } from 'react'
+import PropTypes from 'prop-types'
+import debug from 'debug'
 import {
   v4
 } from 'uuid'
 
-import isTabPanel from './is-tab-panel'
-import isTabGroup from './is-tab-group'
+import isTabPanel from './is-tab-panel.mjs'
+import isTabGroup from './is-tab-group.mjs'
 
-export interface TabSetProps {
-  onChange: (selectedTab: string) => void
-  selectedTab: string
-  children: JSX.Element | JSX.Element[]
-}
+const error = debug('react-tab-set')
 
-export default class TabSet extends Component<TabSetProps> {
+export default class TabSet extends Component {
+  constructor (props) {
+    super(props)
+
+    const {
+      selectedTab
+    } = props
+
+    this.state = {
+      selectedTab
+    }
+  }
+
   /*
    *  The selected tab default does not have to be a uuid, but a uuid
    *  reduces the likelihood that this default has the same value as
    *  an implemented tab
    */
   static defaultProps = {
-    onChange: () => {},
+    onChange () {},
     selectedTab: v4(),
     children: []
   }
 
-  shouldComponentUpdate (props: TabSetProps): boolean {
+  shouldComponentUpdate (props, state) {
     return (
       props.children !== this.props.children ||
-      props.selectedTab !== this.props.selectedTab
+      state.selectedTab !== this.state.selectedTab
     )
   }
 
-  handleTabSelect = (selectedTab: string): void => {
-    if (selectedTab !== this.props.selectedTab) {
-      const { onChange } = this.props
+  handleTabSelect = (selectedTab) => {
+    if (selectedTab !== this.state.selectedTab) {
+      this.setState({ selectedTab }, () => {
+        const { onChange } = this.props
 
-      this.setState({ selectedTab })
-
-      onChange(selectedTab)
+        try {
+          onChange(selectedTab)
+        } catch {
+          error('Error invoking `onChange`')
+        }
+      })
     }
   }
 
-  mapChildren (children: JSX.Element | JSX.Element[], selectedTab: string): JSX.Element[] {
+  mapChildren (children, selectedTab) {
     return Children.map(children, (child) => {
       const { type } = child
 
@@ -88,20 +102,29 @@ export default class TabSet extends Component<TabSetProps> {
     })
   }
 
-  getChildren (): JSX.Element[] {
+  getChildren () {
     const {
-      children,
-      selectedTab
+      children
     } = this.props
+
+    const {
+      selectedTab
+    } = this.state
 
     return this.mapChildren(children, selectedTab)
   }
 
-  render (): JSX.Element {
+  render () {
     return (
       <div className='tab-set'>
         {this.getChildren()}
       </div>
     )
   }
+}
+
+TabSet.propTypes = {
+  onChange: PropTypes.func,
+  selectedTab: PropTypes.string,
+  children: PropTypes.any
 }

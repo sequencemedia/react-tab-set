@@ -1,29 +1,23 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import {
   v4
 } from 'uuid'
 
-export interface TabProps {
-  onTabClick: (tab: string) => void
-  children: JSX.Element | JSX.Element[] | string | number | boolean
-  tab: string
-  selectedTab: string
-}
-
-export default class Tab extends Component<TabProps> {
+export default class Tab extends Component {
   /*
    *  The tab and selected tab defaults do not have to be a uuid, but a uuid
    *  reduces the likelihood that this default has the same value as
    *  an implemented tab
    */
   static defaultProps = {
-    onTabClick: () => {},
+    onTabClick () {},
     tab: v4(),
     selectedTab: v4(),
     children: []
   }
 
-  shouldComponentUpdate (props: TabProps): boolean {
+  shouldComponentUpdate (props) {
     return (
       props.children !== this.props.children ||
       props.tab !== this.props.tab ||
@@ -31,13 +25,13 @@ export default class Tab extends Component<TabProps> {
     )
   }
 
-  handleClick = (): void => {
+  handleClick = () => {
     const { tab, onTabClick } = this.props
 
     onTabClick(tab)
   }
 
-  render (): JSX.Element {
+  render () {
     const {
       tab,
       selectedTab,
@@ -54,4 +48,11 @@ export default class Tab extends Component<TabProps> {
       </li>
     )
   }
+}
+
+Tab.propTypes = {
+  onTabClick: PropTypes.func,
+  tab: PropTypes.string,
+  selectedTab: PropTypes.string,
+  children: PropTypes.any
 }

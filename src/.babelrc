@@ -1,6 +1,5 @@
 {
   "presets": [
-    "@babel/typescript",
     [
       "@babel/env",
       {
@@ -21,26 +20,6 @@
     "@babel/react"
   ],
   "plugins": [
-    "@babel/transform-typescript",
-    "@babel/proposal-export-default-from",
-    "@babel/proposal-export-namespace-from",
-    [
-      "@babel/proposal-class-properties",
-      {
-        "loose": false
-      }
-    ],
-    [
-      "module-resolver",
-      {
-        "root": [
-          ".."
-        ],
-        "cwd": "babelrc",
-        "alias": {
-          "react-tab-set": "."
-        }
-      }
-    ]
+    "@babel/syntax-jsx"
   ]
 }

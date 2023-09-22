@@ -1,42 +1,37 @@
 import React, { Component, Children, cloneElement } from 'react'
+import PropTypes from 'prop-types'
 import {
   v4
 } from 'uuid'
 
-import isTab from './is-tab'
+import isTab from './is-tab.mjs'
 
-interface TabGroupProps {
-  onTabSelect: (selectedTab: string) => void
-  children: JSX.Element | JSX.Element[]
-  selectedTab: string
-}
-
-export default class TabGroup extends Component<TabGroupProps> {
+export default class TabGroup extends Component {
   /*
    *  The selected tab default does not have to be a uuid, but a uuid
    *  reduces the likelihood that this default has the same value as
    *  an implemented tab
    */
   static defaultProps = {
-    onTabSelect: () => {},
+    onTabSelect () {},
     selectedTab: v4(),
     children: []
   }
 
-  shouldComponentUpdate (props: TabGroupProps): boolean {
+  shouldComponentUpdate (props) {
     return (
       props.children !== this.props.children ||
       props.selectedTab !== this.props.selectedTab
     )
   }
 
-  handleTabClick = (tab: string): void => {
+  handleTabClick = (tab) => {
     const { onTabSelect } = this.props
 
     onTabSelect(tab)
   }
 
-  mapChildren (children: JSX.Element | JSX.Element[], selectedTab: string): JSX.Element[] {
+  mapChildren (children, selectedTab) {
     return Children.map(children, (child) => {
       const { type } = child
 
@@ -73,7 +68,7 @@ export default class TabGroup extends Component<TabGroupProps> {
     })
   }
 
-  getChildren (): JSX.Element[] {
+  getChildren () {
     const {
       children,
       selectedTab
@@ -82,11 +77,17 @@ export default class TabGroup extends Component<TabGroupProps> {
     return this.mapChildren(children, selectedTab)
   }
 
-  render (): JSX.Element {
+  render () {
     return (
       <ul className='tab-group'>
         {this.getChildren()}
       </ul>
     )
   }
+}
+
+TabGroup.propTypes = {
+  onTabSelect: PropTypes.func,
+  selectedTab: PropTypes.string,
+  children: PropTypes.any
 }

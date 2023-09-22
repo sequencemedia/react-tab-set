@@ -1,16 +1,10 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import {
   v4
 } from 'uuid'
 
-interface TabPanelProps {
-  children: JSX.Element | JSX.Element[] | string | number | boolean | undefined | null
-  tab: string
-  selectedTab: string
-  render?: () => JSX.Element | JSX.Element[] | string | number | boolean | undefined | null
-}
-
-export default class TabPanel extends Component<TabPanelProps> {
+export default class TabPanel extends Component {
   /*
    *  The tab and selected tab defaults do not have to be a uuid, but a uuid
    *  reduces the likelihood that this default has the same value as
@@ -21,7 +15,7 @@ export default class TabPanel extends Component<TabPanelProps> {
     selectedTab: v4()
   }
 
-  shouldComponentUpdate (props: TabPanelProps): boolean {
+  shouldComponentUpdate (props) {
     if (props.render instanceof Function) return true
 
     return (
@@ -31,7 +25,7 @@ export default class TabPanel extends Component<TabPanelProps> {
     )
   }
 
-  renderPanel (): JSX.Element | null {
+  renderPanel () {
     const {
       render = () => null,
       children = render()
@@ -48,7 +42,7 @@ export default class TabPanel extends Component<TabPanelProps> {
     return null
   }
 
-  render (): JSX.Element | null {
+  render () {
     const {
       tab,
       selectedTab
@@ -60,4 +54,11 @@ export default class TabPanel extends Component<TabPanelProps> {
 
     return null
   }
+}
+
+TabPanel.propTypes = {
+  render: PropTypes.func,
+  tab: PropTypes.string,
+  selectedTab: PropTypes.string,
+  children: PropTypes.any
 }
