@@ -6,7 +6,11 @@ import PropTypes from 'prop-types'
 
 import isTab from './is-tab.mjs'
 
-function mapChildren (children, selectedTab, onTabSelect) {
+function mapChildren (
+  children,
+  selectedTab,
+  onTabSelect
+) {
   return Children.map(children, (child) => {
     const { type } = child
 
