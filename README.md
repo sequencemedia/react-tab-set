@@ -99,7 +99,7 @@ Similarly, they can be declared in any combination.
 
 ## Demonstrating _react-tab-set_
 
-[Example `Storybooks` are available on GitHub](https://github.com/sequencemedia/react-tab-set).
+[Example `Storybooks` are available](https://github.com/sequencemedia/react-tab-set).
 
 Clone the repository, then:
 
