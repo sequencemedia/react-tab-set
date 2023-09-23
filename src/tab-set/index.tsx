@@ -1,4 +1,9 @@
-import React, { Component, Children, cloneElement } from 'react'
+import React, {
+  Children,
+  cloneElement,
+  useState,
+  useEffect
+} from 'react'
 import {
   v4
 } from 'uuid'
@@ -10,122 +15,88 @@ import isTabGroup from './is-tab-group.mts'
 const error = debug('react-tab-set/tab-set')
 
 export interface TabSetProps {
-  onChange: (selectedTab: string) => void
-  selectedTab: string
   children: JSX.Element | JSX.Element[]
-}
-
-export interface TabSetState {
   selectedTab: string
+  onChange: (selectedTab: string) => void
 }
 
-export default class TabSet extends Component<TabSetProps, TabSetState> {
-  state = {
-    selectedTab: this.props.selectedTab
-  }
+function mapChildren (
+  children: JSX.Element | JSX.Element[],
+  selectedTab: string,
+  onTabSelect: (value: React.SetStateAction<string>) => void): JSX.Element[] {
+  return Children.map(children, (child) => {
+    const { type } = child
 
-  /*
-   *  The selected tab default does not have to be a uuid, but a uuid
-   *  reduces the likelihood that this default has the same value as
-   *  an implemented tab
-   */
-  static defaultProps = {
-    onChange () {},
-    selectedTab: v4(),
-    children: []
-  }
+    if (type) { // eslint-disable-line @typescript-eslint/strict-boolean-expressions
+      const { props } = child
 
-  static getDerivedStateFromProps ({ selectedTab }: TabSetState): TabSetState {
-    return {
-      selectedTab
-    }
-  }
-
-  shouldComponentUpdate (props: TabSetProps, state: TabSetState): boolean {
-    return (
-      props.children !== this.props.children ||
-      state.selectedTab !== this.state.selectedTab
-    )
-  }
-
-  handleTabSelect = (selectedTab: string): void => {
-    if (selectedTab !== this.state.selectedTab) {
-      this.setState({ selectedTab }, () => {
-        const { onChange } = this.props
-
-        try {
-          onChange(selectedTab)
-        } catch {
-          error('Error `onChange`')
-        }
-      })
-    }
-  }
-
-  mapChildren (children: JSX.Element | JSX.Element[], selectedTab: string): JSX.Element[] {
-    return Children.map(children, (child) => {
-      const { type } = child
-
-      if (type) { // eslint-disable-line @typescript-eslint/strict-boolean-expressions
-        const { props } = child
-
-        if (isTabGroup(type)) {
-          return cloneElement(
-            child,
-            {
-              ...props,
-              selectedTab,
-              onTabSelect: this.handleTabSelect
-            }
-          )
-        }
-
-        if (isTabPanel(type)) {
-          return cloneElement(
-            child,
-            {
-              ...props,
-              selectedTab
-            }
-          )
-        }
-
-        const {
-          children
-        } = props
-
-        if (children) { // eslint-disable-line @typescript-eslint/strict-boolean-expressions
-          return cloneElement(
-            child,
-            {
-              ...props,
-              children: this.mapChildren(children, selectedTab)
-            }
-          )
-        }
+      if (isTabGroup(type)) {
+        return cloneElement(
+          child,
+          {
+            ...props,
+            selectedTab,
+            onTabSelect
+          }
+        )
       }
 
-      return child
-    })
-  }
+      if (isTabPanel(type)) {
+        return cloneElement(
+          child,
+          {
+            ...props,
+            selectedTab
+          }
+        )
+      }
 
-  getChildren (): JSX.Element[] {
-    const {
-      children
-    } = this.props
+      const {
+        children
+      } = props
 
-    const {
-      selectedTab
-    } = this.state
+      if (children) { // eslint-disable-line @typescript-eslint/strict-boolean-expressions
+        return cloneElement(
+          child,
+          {
+            ...props,
+            children: mapChildren(children, selectedTab, onTabSelect)
+          }
+        )
+      }
+    }
 
-    return this.mapChildren(children, selectedTab)
-  }
+    return child
+  })
+}
 
-  render (): JSX.Element {
-    return (
-      <div className='tab-set'>
-        {this.getChildren()}
-      </div>
-    )
-  }
+export default function TabSet (props: TabSetProps): JSX.Element {
+  const {
+    children,
+    selectedTab: tab
+  } = props
+
+  const [selectedTab, setSelectedTab] = useState(tab)
+
+  useEffect(() => { setSelectedTab(tab) }, [tab])
+
+  useEffect(() => {
+    const { onChange } = props
+
+    try {
+      onChange(selectedTab)
+    } catch {
+      error('Error `onChange`')
+    }
+  }, [selectedTab])
+
+  return (
+    <div className='selectedTab-set'>
+      {mapChildren(children, selectedTab, setSelectedTab)}
+    </div>
+  )
+}
+
+TabSet.defaultProps = {
+  selectedTab: v4()
 }
