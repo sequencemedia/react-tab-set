@@ -11,7 +11,11 @@ export interface TabGroupProps {
   onTabSelect: (value: React.SetStateAction<string>) => void
 }
 
-function mapChildren (children: JSX.Element | JSX.Element[], selectedTab: string, onTabSelect: (value: React.SetStateAction<string>) => void): JSX.Element[] {
+function mapChildren (
+  children: JSX.Element | JSX.Element[],
+  selectedTab: string,
+  onTabSelect: (value: React.SetStateAction<string>) => void
+): JSX.Element[] {
   return Children.map(children, (child) => {
     const { type } = child
 

@@ -23,7 +23,8 @@ export interface TabSetProps {
 function mapChildren (
   children: JSX.Element | JSX.Element[],
   selectedTab: string,
-  onTabSelect: (value: React.SetStateAction<string>) => void): JSX.Element[] {
+  onTabSelect: (value: React.SetStateAction<string>) => void
+): JSX.Element[] {
   return Children.map(children, (child) => {
     const { type } = child
 
