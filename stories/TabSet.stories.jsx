@@ -8,7 +8,7 @@ import TabPanel from 'react-tab-set/tab-set/tab-panel'
 
 function Component (props) {
   return ( // eslint-disable-line react/prop-types
-    <TabSet {...props} selectedTab='one'>
+    <TabSet {...props} onChange={action('onChange')}>
       <TabGroup>
         <Tab tab='one'>
           Tab One
@@ -28,13 +28,20 @@ function Component (props) {
 }
 
 export default {
-  title: 'TabSet/Component',
-  component: Component
+  title: 'Components/TabSet',
+  component: Component,
+  argTypes: {
+    selectedTab: {
+      options: ['one', 'two'],
+      control: { type: 'radio' },
+      description: 'selectedTab',
+    }
+  }
 }
 
-export const Default = {
+export const ComponentStory = {
   args: {
-    onChange: action('onChange')
+    selectedTab: 'one'
   }
 }
 

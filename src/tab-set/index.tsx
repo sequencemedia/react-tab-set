@@ -10,6 +10,7 @@ import isTabGroup from './is-tab-group.mts'
 const error = debug('react-tab-set/tab-set')
 
 export interface TabSetProps {
+  onClick: (selectedTab: string) => void
   onChange: (selectedTab: string) => void
   selectedTab: string
   children: JSX.Element | JSX.Element[]
@@ -20,16 +21,8 @@ export interface TabSetState {
 }
 
 export default class TabSet extends Component<TabSetProps, TabSetState> {
-  constructor (props: TabSetProps) {
-    super(props)
-
-    const {
-      selectedTab
-    } = props
-
-    this.state = {
-      selectedTab
-    }
+  state = {
+    selectedTab: this.props.selectedTab
   }
 
   /*
@@ -38,9 +31,16 @@ export default class TabSet extends Component<TabSetProps, TabSetState> {
    *  an implemented tab
    */
   static defaultProps = {
-    onChange: () => {},
+    onClick () {},
+    onChange () {},
     selectedTab: v4(),
     children: []
+  }
+
+  static getDerivedStateFromProps ({ selectedTab }: TabSetState): TabSetState {
+    return {
+      selectedTab
+    }
   }
 
   shouldComponentUpdate (props: TabSetProps, state: TabSetState): boolean {
@@ -51,10 +51,18 @@ export default class TabSet extends Component<TabSetProps, TabSetState> {
   }
 
   handleTabSelect = (selectedTab: string): void => {
-    if (selectedTab !== this.state.selectedTab) {
-      const { onChange } = this.props
+    const { onClick } = this.props
 
+    try {
+      onClick(selectedTab)
+    } catch {
+      error('Error `onClick`')
+    }
+
+    if (selectedTab !== this.state.selectedTab) {
       this.setState({ selectedTab }, () => {
+        const { onChange } = this.props
+
         try {
           onChange(selectedTab)
         } catch {

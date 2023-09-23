@@ -5,7 +5,7 @@ import {
 
 import isTab from './is-tab.mts'
 
-interface TabGroupProps {
+export interface TabGroupProps {
   onTabSelect: (selectedTab: string) => void
   children: JSX.Element | JSX.Element[]
   selectedTab: string

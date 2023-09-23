@@ -22,6 +22,17 @@
 # Deps
 .depsrc
 
+# Build
+build
+gulpfile.*
+
+# Jest
+__tests__
+jest.config.cjs
+
+# Coverage
+.coverage
+
 # Storybook
 .storybook
 stories

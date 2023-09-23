@@ -3,7 +3,7 @@ import {
   v4
 } from 'uuid'
 
-interface TabPanelProps {
+export interface TabPanelProps {
   children: JSX.Element | JSX.Element[] | string | number | boolean | undefined | null
   tab: string
   selectedTab: string

@@ -10,6 +10,9 @@
     "url": "http://www.sequencemedia.net"
   },
   "license": "MIT",
+  "engines": {
+    "node": ">=18.17.0"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/sequencemedia/react-tab-set.git"
@@ -26,7 +29,6 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.22.15",
     "@babel/core": "^7.22.20",
     "@babel/eslint-parser": "^7.22.15",
     "@babel/plugin-transform-typescript": "^7.22.15",
@@ -36,10 +38,6 @@
     "@babel/register": "^7.22.15",
     "@sequencemedia/hooks": "^1.0.454",
     "@storybook/addon-essentials": "^7.4.4",
-    "@storybook/addon-interactions": "^7.4.4",
-    "@storybook/addon-links": "^7.4.4",
-    "@storybook/addon-onboarding": "^1.0.8",
-    "@storybook/blocks": "^7.4.4",
     "@storybook/react": "^7.4.4",
     "@storybook/react-webpack5": "^7.4.4",
     "@types/debug": "^4.1.9",

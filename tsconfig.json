@@ -7,6 +7,7 @@
     "noEmit": true,
     "strict": true,
     "isolatedModules": true,
+    "noImplicitAny": true,
     "allowImportingTsExtensions": true,
     "baseUrl": "."
   },
