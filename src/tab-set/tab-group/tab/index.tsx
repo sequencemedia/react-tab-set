@@ -4,7 +4,7 @@ import {
 } from 'uuid'
 
 export interface TabProps {
-  onTabClick: (tab: string) => void
+  onTabSelect: (tab: string) => void
   children: JSX.Element | JSX.Element[] | string | number | boolean
   tab: string
   selectedTab: string
@@ -17,7 +17,7 @@ export default class Tab extends Component<TabProps> {
    *  an implemented tab
    */
   static defaultProps = {
-    onTabClick () {},
+    onTabSelect () {},
     tab: v4(),
     selectedTab: v4(),
     children: []
@@ -32,9 +32,9 @@ export default class Tab extends Component<TabProps> {
   }
 
   handleClick = (): void => {
-    const { tab, onTabClick } = this.props
+    const { tab, onTabSelect } = this.props
 
-    onTabClick(tab)
+    onTabSelect(tab)
   }
 
   render (): JSX.Element {

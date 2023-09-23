@@ -30,7 +30,7 @@ export default class TabGroup extends Component<TabGroupProps> {
     )
   }
 
-  handleTabClick = (tab: string): void => {
+  handleTabSelect = (tab: string): void => {
     const { onTabSelect } = this.props
 
     onTabSelect(tab)
@@ -49,7 +49,7 @@ export default class TabGroup extends Component<TabGroupProps> {
             {
               ...props,
               selectedTab,
-              onTabClick: this.handleTabClick
+              onTabSelect: this.handleTabSelect
             }
           )
         }
