@@ -1,14 +1,14 @@
 import React from 'react'
 import { action } from '@storybook/addon-actions'
-import TabSet, {
-  TabGroup,
-  Tab,
-  TabPanel
-} from 'react-tab-set'
 
-function Template (args) {
+import TabSet from 'react-tab-set'
+import TabGroup from 'react-tab-set/tab-set/tab-group'
+import Tab from 'react-tab-set/tab-set/tab-group/tab'
+import TabPanel from 'react-tab-set/tab-set/tab-panel'
+
+function Component (props) {
   return ( // eslint-disable-line react/prop-types
-    <TabSet {...args} selectedTab='one'>
+    <TabSet {...props} onChange={action('onChange')}>
       <TabGroup>
         <Tab tab='one'>
           Tab One
@@ -27,14 +27,20 @@ function Template (args) {
   )
 }
 
-export const Component = Template.bind({})
-
-Component.args = {
-  onChange: action('onChange')
+export default {
+  title: 'Components/TabSet',
+  component: Component,
+  argTypes: {
+    selectedTab: {
+      options: ['one', 'two'],
+      control: { type: 'radio' },
+      description: 'selectedTab'
+    }
+  }
 }
 
-export default {
-  title: 'TabSet/TabSet',
-  component: Component,
-  template: Template
+export const ComponentStory = {
+  args: {
+    selectedTab: 'one'
+  }
 }

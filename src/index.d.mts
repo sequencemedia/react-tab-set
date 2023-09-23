@@ -1,5 +1,11 @@
 declare module 'react-tab-set' {
-  import { Component } from 'react'
+  import type {
+    JSX
+  } from 'react'
+
+  import {
+    Component
+  } from 'react'
 
   export interface TabSetProps {
     onChange: (selectedTab: string) => void

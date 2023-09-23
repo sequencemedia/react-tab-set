@@ -1,9 +1,9 @@
 import React, { Component, Children, cloneElement } from 'react'
 import PropTypes from 'prop-types'
-import debug from 'debug'
 import {
   v4
 } from 'uuid'
+import debug from 'debug'
 
 import isTabPanel from './is-tab-panel.mjs'
 import isTabGroup from './is-tab-group.mjs'
@@ -11,16 +11,8 @@ import isTabGroup from './is-tab-group.mjs'
 const error = debug('react-tab-set')
 
 export default class TabSet extends Component {
-  constructor (props) {
-    super(props)
-
-    const {
-      selectedTab
-    } = props
-
-    this.state = {
-      selectedTab
-    }
+  state = {
+    selectedTab: this.props.selectedTab
   }
 
   /*
@@ -29,9 +21,16 @@ export default class TabSet extends Component {
    *  an implemented tab
    */
   static defaultProps = {
+    onClick () {},
     onChange () {},
     selectedTab: v4(),
     children: []
+  }
+
+  static getDerivedStateFromProps ({ selectedTab }) {
+    return {
+      selectedTab
+    }
   }
 
   shouldComponentUpdate (props, state) {
@@ -42,6 +41,14 @@ export default class TabSet extends Component {
   }
 
   handleTabSelect = (selectedTab) => {
+    const { onClick } = this.props
+
+    try {
+      onClick(selectedTab)
+    } catch {
+      error('Error `onClick`')
+    }
+
     if (selectedTab !== this.state.selectedTab) {
       this.setState({ selectedTab }, () => {
         const { onChange } = this.props
@@ -49,7 +56,7 @@ export default class TabSet extends Component {
         try {
           onChange(selectedTab)
         } catch {
-          error('Error invoking `onChange`')
+          error('Error `onChange`')
         }
       })
     }
@@ -124,6 +131,7 @@ export default class TabSet extends Component {
 }
 
 TabSet.propTypes = {
+  onClick: PropTypes.func,
   onChange: PropTypes.func,
   selectedTab: PropTypes.string,
   children: PropTypes.any
