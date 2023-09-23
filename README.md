@@ -47,7 +47,7 @@ Content can be declared either as children or as the return of a function assign
 
 If your component extends `PureComponent` or is presentational, you might prefer to declare content as children.
 
-Otherwise, you might prefer to assign a function to the `render` prop, so that rendering is deferred until the tab is selected.
+Otherwise, you can assign a function to the `render` prop, so that rendering is deferred until the tab is selected.
 
 ### Content as children
 
