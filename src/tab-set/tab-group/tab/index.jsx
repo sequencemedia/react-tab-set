@@ -1,58 +1,35 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-import {
-  v4
-} from 'uuid'
 
-export default class Tab extends Component {
-  /*
-   *  The tab and selected tab defaults do not have to be a uuid, but a uuid
-   *  reduces the likelihood that this default has the same value as
-   *  an implemented tab
-   */
-  static defaultProps = {
-    onTabClick () {},
-    tab: v4(),
-    selectedTab: v4(),
-    children: []
-  }
+export default function Tab (props) {
+  const {
+    children,
+    tab,
+    selectedTab,
+    onTabSelect
+  } = props
 
-  shouldComponentUpdate (props) {
-    return (
-      props.children !== this.props.children ||
-      props.tab !== this.props.tab ||
-      props.selectedTab !== this.props.selectedTab
-    )
-  }
+  const className = (tab === selectedTab)
+    ? 'tab selected'
+    : 'tab'
 
-  handleClick = () => {
-    const { tab, onTabClick } = this.props
-
-    onTabClick(tab)
-  }
-
-  render () {
-    const {
-      tab,
-      selectedTab,
-      children
-    } = this.props
-
-    const className = (tab === selectedTab)
-      ? 'tab selected'
-      : 'tab'
-
-    return (
-      <li className={className} onClick={this.handleClick}>
-        {children}
-      </li>
-    )
-  }
+  return (
+    <li
+      className={className}
+      onClick={() => {
+        onTabSelect(tab)
+      }}>
+      {children}
+    </li>
+  )
 }
 
 Tab.propTypes = {
-  onTabClick: PropTypes.func,
-  tab: PropTypes.string,
-  selectedTab: PropTypes.string,
-  children: PropTypes.any
+  children: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.arrayOf(PropTypes.node)
+  ]).isRequired,
+  tab: PropTypes.string.isRequired,
+  selectedTab: PropTypes.string.isRequired,
+  onTabSelect: PropTypes.func.isRequired
 }

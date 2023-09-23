@@ -3,31 +3,31 @@ declare module 'react-tab-set' {
     JSX
   } from 'react'
 
-  import {
+  import React, {
     Component
   } from 'react'
 
   export interface TabSetProps {
-    onChange: (selectedTab: string) => void
-    selectedTab: string
     children: JSX.Element | JSX.Element[]
+    selectedTab: string
+    onChange: (selectedTab: string) => void
   }
 
   export interface TabGroupProps {
-    onTabSelect: (selectedTab: string) => void
     children: JSX.Element | JSX.Element[]
     selectedTab: string
+    onTabSelect: (value: React.SetStateAction<string>) => void
   }
 
   export interface TabProps {
-    onTabClick: (tab: string) => void
     children: JSX.Element | JSX.Element[] | string | number | boolean
     tab: string
     selectedTab: string
+    onTabSelect: (value: React.SetStateAction<string>) => void
   }
 
   export interface TabPanelProps {
-    children: JSX.Element | JSX.Element[] | string | number | boolean | undefined | null
+    children?: JSX.Element | JSX.Element[] | string | number | boolean | undefined | null
     tab: string
     selectedTab: string
     render?: () => JSX.Element | JSX.Element[] | string | number | boolean | undefined | null

@@ -4,12 +4,6 @@ require('@babel/register')({
   ]
 })
 
-const debug = require('debug')
-
-const log = debug('react-tab-set/tab-set/tab-group/tab')
-
-log('`react-tab-set` is awake')
-
 const {
   default: component
 } = require('./index.jsx')
