@@ -1,9 +1,11 @@
 declare module 'react-tab-set' {
+  import type React from 'react'
+
   import type {
     JSX
   } from 'react'
 
-  import React, {
+  import {
     Component
   } from 'react'
 
