@@ -1,4 +1,7 @@
 import React from 'react'
+import {
+  v4
+} from 'uuid'
 
 export interface TabProps {
   children: JSX.Element | JSX.Element[] | string | number | boolean
@@ -28,4 +31,9 @@ export default function Tab (props: TabProps): JSX.Element {
       {children}
     </li>
   )
+}
+
+Tab.defaultProps = {
+  selectedTab: v4(),
+  onTabSelect () { }
 }

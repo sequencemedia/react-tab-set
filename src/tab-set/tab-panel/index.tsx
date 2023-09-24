@@ -1,4 +1,7 @@
 import React from 'react'
+import {
+  v4
+} from 'uuid'
 
 export interface TabPanelProps {
   children?: JSX.Element | JSX.Element[] | string | number | boolean | undefined | null
@@ -29,4 +32,8 @@ export default function TabPanel (props: TabPanelProps): JSX.Element | null {
   }
 
   return null
+}
+
+TabPanel.defaultProps = {
+  selectedTab: v4()
 }

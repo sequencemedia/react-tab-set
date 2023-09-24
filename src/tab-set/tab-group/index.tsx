@@ -2,6 +2,9 @@ import React, {
   Children,
   cloneElement
 } from 'react'
+import {
+  v4
+} from 'uuid'
 
 import isTab from './is-tab.mts'
 
@@ -64,4 +67,9 @@ export default function TabGroup (props: TabGroupProps): JSX.Element {
       {mapChildren(children, selectedTab, onTabSelect)}
     </ul>
   )
+}
+
+TabGroup.defaultProps = {
+  selectedTab: v4(),
+  onTabSelect () { }
 }

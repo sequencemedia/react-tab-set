@@ -39,6 +39,7 @@
     "@babel/register": "^7.22.15",
     "@sequencemedia/hooks": "^1.0.454",
     "@storybook/addon-essentials": "^7.4.4",
+    "@storybook/addon-links": "^7.4.4",
     "@storybook/react": "^7.4.4",
     "@storybook/react-webpack5": "^7.4.4",
     "@types/debug": "^4.1.9",
