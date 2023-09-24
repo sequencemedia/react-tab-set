@@ -87,7 +87,7 @@ export default function TabSet (props) {
   }, [selectedTab])
 
   return (
-    <div className='selectedTab-set'>
+    <div className='tab-set'>
       {mapChildren(children, selectedTab, setSelectedTab)}
     </div>
   )

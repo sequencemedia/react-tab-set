@@ -3,6 +3,9 @@ import React, {
   cloneElement
 } from 'react'
 import PropTypes from 'prop-types'
+import {
+  v4
+} from 'uuid'
 
 import isTab from './is-tab.mjs'
 
@@ -66,6 +69,11 @@ TabGroup.propTypes = {
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node)
   ]).isRequired,
-  selectedTab: PropTypes.string.isRequired,
-  onTabSelect: PropTypes.func.isRequired
+  selectedTab: PropTypes.string,
+  onTabSelect: PropTypes.func
+}
+
+TabGroup.defaultProps = {
+  selectedTab: v4(),
+  onTabSelect () { }
 }

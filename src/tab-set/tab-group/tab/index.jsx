@@ -1,5 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {
+  v4
+} from 'uuid'
 
 export default function Tab (props) {
   const {
@@ -30,6 +33,11 @@ Tab.propTypes = {
     PropTypes.arrayOf(PropTypes.node)
   ]).isRequired,
   tab: PropTypes.string.isRequired,
-  selectedTab: PropTypes.string.isRequired,
-  onTabSelect: PropTypes.func.isRequired
+  selectedTab: PropTypes.string,
+  onTabSelect: PropTypes.func
+}
+
+Tab.defaultProps = {
+  selectedTab: v4(),
+  onTabSelect () { }
 }
