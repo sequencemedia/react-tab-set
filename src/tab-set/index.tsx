@@ -34,7 +34,7 @@ function mapChildren (
       if (isTabGroup(type)) {
         return cloneElement(
           child,
-          {
+          { // eslint-disable-line @typescript-eslint/no-unsafe-argument
             ...props,
             selectedTab,
             onTabSelect
@@ -45,7 +45,7 @@ function mapChildren (
       if (isTabPanel(type)) {
         return cloneElement(
           child,
-          {
+          { // eslint-disable-line @typescript-eslint/no-unsafe-argument
             ...props,
             selectedTab
           }
@@ -59,9 +59,9 @@ function mapChildren (
       if (children) { // eslint-disable-line @typescript-eslint/strict-boolean-expressions
         return cloneElement(
           child,
-          {
+          { // eslint-disable-line @typescript-eslint/no-unsafe-argument
             ...props,
-            children: mapChildren(children, selectedTab, onTabSelect)
+            children: mapChildren(children, selectedTab, onTabSelect) // eslint-disable-line @typescript-eslint/no-unsafe-argument
           }
         )
       }
