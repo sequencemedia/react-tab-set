@@ -38,10 +38,10 @@
     "@babel/preset-typescript": "^7.24.1",
     "@babel/register": "^7.23.7",
     "@sequencemedia/hooks": "^1.0.486",
-    "@storybook/addon-essentials": "^8.0.2",
-    "@storybook/addon-links": "^8.0.2",
-    "@storybook/react": "^8.0.2",
-    "@storybook/react-webpack5": "^8.0.2",
+    "@storybook/addon-essentials": "^8.0.4",
+    "@storybook/addon-links": "^8.0.4",
+    "@storybook/react": "^8.0.4",
+    "@storybook/react-webpack5": "^8.0.4",
     "@types/debug": "^4.1.12",
     "@types/react": "^18.2.67",
     "@types/uuid": "^9.0.8",
@@ -58,7 +58,7 @@
     "prop-types": "15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "storybook": "^8.0.2",
+    "storybook": "^8.0.4",
     "typescript": "^5.4.3"
   },
   "exports": {
