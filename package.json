@@ -43,7 +43,7 @@
     "@storybook/react": "^8.0.4",
     "@storybook/react-webpack5": "^8.0.4",
     "@types/debug": "^4.1.12",
-    "@types/react": "^18.2.70",
+    "@types/react": "^18.2.72",
     "@types/uuid": "^9.0.8",
     "@typescript-eslint/eslint-plugin": "^7.4.0",
     "@typescript-eslint/parser": "^7.4.0",
