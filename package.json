@@ -18,11 +18,11 @@
     "url": "git://github.com/sequencemedia/react-tab-set.git"
   },
   "scripts": {
+    "build-storybook": "storybook build",
     "lint": "eslint . --ext .mjs,.cjs,.mts,.cts,.tsx",
     "lint:fix": "npm run lint -- --fix",
     "prepare": "husky",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "storybook": "storybook dev -p 6006"
   },
   "dependencies": {
     "debug": "^4.3.4",
@@ -66,6 +66,10 @@
       "require": "./src/index.cjs",
       "import": "./src/index.mjs"
     },
+    "./tab-set": {
+      "require": "./src/tab-set/index.cjs",
+      "import": "./src/tab-set/index.mjs"
+    },
     "./tab-set/is-tab-group": {
       "require": "./src/tab-set/is-tab-group.cjs",
       "import": "./src/tab-set/is-tab-group.mjs"
@@ -85,10 +89,6 @@
     "./tab-set/tab-panel": {
       "require": "./src/tab-set/tab-panel/index.cjs",
       "import": "./src/tab-set/tab-panel/index.mjs"
-    },
-    "./tab-set": {
-      "require": "./src/tab-set/index.cjs",
-      "import": "./src/tab-set/index.mjs"
     }
   }
 }
