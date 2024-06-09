@@ -8,8 +8,11 @@ import React, {
 import {
   v4
 } from 'uuid'
+import debug from 'debug'
 
 import isTab from './is-tab.mts'
+
+const log = debug('react-tab-set/tab-set/tab-group')
 
 export interface TabGroupProps {
   children: JSX.Element | JSX.Element[]
@@ -58,11 +61,15 @@ function mapChildren (
   })
 }
 
+function DEFAULT_HANDLE_TAB_SELECT (value: React.SetStateAction<string>): void {
+  log(value)
+}
+
 export default function TabGroup (props: TabGroupProps): JSX.Element {
   const {
     children,
-    selectedTab,
-    onTabSelect
+    selectedTab = v4(),
+    onTabSelect = DEFAULT_HANDLE_TAB_SELECT
   } = props
 
   return (
@@ -70,9 +77,4 @@ export default function TabGroup (props: TabGroupProps): JSX.Element {
       {mapChildren(children, selectedTab, onTabSelect)}
     </ul>
   )
-}
-
-TabGroup.defaultProps = {
-  selectedTab: v4(),
-  onTabSelect () { }
 }

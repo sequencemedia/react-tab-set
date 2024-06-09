@@ -13,15 +13,19 @@ export interface TabPanelProps {
   render?: () => JSX.Element | JSX.Element[] | string | number | boolean | undefined | null
 }
 
+function DEFAULT_RENDER (): null {
+  return null
+}
+
 export default function TabPanel (props: TabPanelProps): JSX.Element | null {
   const {
     tab,
-    selectedTab
+    selectedTab = v4()
   } = props
 
   if (tab === selectedTab) {
     const {
-      render = () => null,
+      render = DEFAULT_RENDER,
       children = render()
     } = props
 
@@ -35,8 +39,4 @@ export default function TabPanel (props: TabPanelProps): JSX.Element | null {
   }
 
   return null
-}
-
-TabPanel.defaultProps = {
-  selectedTab: v4()
 }

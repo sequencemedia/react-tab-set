@@ -7,6 +7,9 @@ import React, {
 import {
   v4
 } from 'uuid'
+import debug from 'debug'
+
+const log = debug('react-tab-set/tab-set/tab-group/tab')
 
 export interface TabProps {
   children: JSX.Element | JSX.Element[] | string | number | boolean
@@ -15,12 +18,16 @@ export interface TabProps {
   onTabSelect: (value: React.SetStateAction<string>) => void
 }
 
+function DEFAULT_HANDLE_TAB_SELECT (value: React.SetStateAction<string>): void {
+  log(value)
+}
+
 export default function Tab (props: TabProps): JSX.Element {
   const {
     children,
     tab,
-    selectedTab,
-    onTabSelect
+    selectedTab = v4(),
+    onTabSelect = DEFAULT_HANDLE_TAB_SELECT
   } = props
 
   const className = (tab === selectedTab)
@@ -38,9 +45,4 @@ export default function Tab (props: TabProps): JSX.Element {
       {children}
     </li>
   )
-}
-
-Tab.defaultProps = {
-  selectedTab: v4(),
-  onTabSelect () { }
 }

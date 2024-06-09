@@ -15,7 +15,8 @@ import debug from 'debug'
 import isTabPanel from './is-tab-panel.mts'
 import isTabGroup from './is-tab-group.mts'
 
-const error = debug('react-tab-set/tab-set')
+const log = debug('react-tab-set/tab-set')
+const error = debug('react-tab-set/tab-set:error')
 
 export interface TabSetProps {
   children: JSX.Element | JSX.Element[]
@@ -74,23 +75,35 @@ function mapChildren (
   })
 }
 
+function DEFAULT_HANDLE_CHANGE (selectedTab: string): void {
+  log(selectedTab)
+}
+
 export default function TabSet (props: TabSetProps): JSX.Element {
   const {
     children,
-    selectedTab: tab
+    selectedTab: tab = v4()
   } = props
 
   const [selectedTab, setSelectedTab] = useState(tab)
 
-  useEffect(() => { setSelectedTab(tab) }, [tab])
+  useEffect(() => {
+    if (selectedTab !== tab) {
+      setSelectedTab(tab)
+    }
+  }, [tab])
 
   useEffect(() => {
-    const { onChange } = props
+    if (selectedTab !== tab) {
+      const {
+        onChange = DEFAULT_HANDLE_CHANGE
+      } = props
 
-    try {
-      onChange(selectedTab)
-    } catch {
-      error('Error `onChange`')
+      try {
+        onChange(selectedTab)
+      } catch {
+        error('Error `onChange`')
+      }
     }
   }, [selectedTab])
 
@@ -99,8 +112,4 @@ export default function TabSet (props: TabSetProps): JSX.Element {
       {mapChildren(children, selectedTab, setSelectedTab)}
     </div>
   )
-}
-
-TabSet.defaultProps = {
-  selectedTab: v4()
 }
