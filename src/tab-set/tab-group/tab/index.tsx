@@ -1,4 +1,9 @@
-import React from 'react'
+import type {
+  JSX
+} from 'react'
+import React, {
+  useCallback
+} from 'react'
 import {
   v4
 } from 'uuid'
@@ -22,12 +27,14 @@ export default function Tab (props: TabProps): JSX.Element {
     ? 'tab selected'
     : 'tab'
 
+  const handleClick = useCallback(function onClick (): void {
+    onTabSelect(tab)
+  }, [tab])
+
   return (
     <li
       className={className}
-      onClick={(): void => {
-        onTabSelect(tab)
-      }}>
+      onClick={handleClick}>
       {children}
     </li>
   )

@@ -1,3 +1,6 @@
+import type {
+  JSX
+} from 'react'
 import React, {
   Children,
   cloneElement,
