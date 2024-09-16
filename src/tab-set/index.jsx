@@ -66,25 +66,38 @@ function mapChildren (
   })
 }
 
+function DEFAULT_CHANGE () {
+  //
+}
+
 export default function TabSet (props) {
   const {
     children,
-    selectedTab: tab
+    selectedTab: tab = v4()
   } = props
 
-  const [selectedTab, setSelectedTab] = useState(tab)
+  const [
+    selectedTab,
+    setSelectedTab
+  ] = useState(tab)
 
-  useEffect(() => { setSelectedTab(tab) }, [tab])
+  useEffect(() => { setSelectedTab(tab) }, [
+    tab
+  ])
 
   useEffect(() => {
-    const { onChange } = props
+    const {
+      onChange = DEFAULT_CHANGE
+    } = props
 
     try {
       onChange(selectedTab)
     } catch {
       error('Error `onChange`')
     }
-  }, [selectedTab])
+  }, [
+    selectedTab
+  ])
 
   return (
     <div className='tab-set'>
@@ -103,5 +116,6 @@ TabSet.propTypes = {
 }
 
 TabSet.defaultProps = {
-  selectedTab: v4()
+  selectedTab: v4(),
+  onChange () { }
 }

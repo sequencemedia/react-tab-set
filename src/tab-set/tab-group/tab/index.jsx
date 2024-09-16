@@ -4,12 +4,16 @@ import {
   v4
 } from 'uuid'
 
+function DEFAULT_SELECT () {
+  //
+}
+
 export default function Tab (props) {
   const {
     children,
     tab,
-    selectedTab,
-    onTabSelect
+    selectedTab = v4(),
+    onTabSelect = DEFAULT_SELECT
   } = props
 
   const className = (tab === selectedTab)

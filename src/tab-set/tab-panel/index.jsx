@@ -4,15 +4,19 @@ import {
   v4
 } from 'uuid'
 
+function DEFAULT_RENDER () {
+  return null
+}
+
 export default function TabPanel (props) {
   const {
     tab,
-    selectedTab
+    selectedTab = v4()
   } = props
 
   if (tab === selectedTab) {
     const {
-      render = () => null,
+      render = DEFAULT_RENDER,
       children = render()
     } = props
 
@@ -36,8 +40,4 @@ TabPanel.propTypes = {
   tab: PropTypes.string.isRequired,
   selectedTab: PropTypes.string,
   render: PropTypes.func
-}
-
-TabPanel.defaultProps = {
-  selectedTab: v4()
 }

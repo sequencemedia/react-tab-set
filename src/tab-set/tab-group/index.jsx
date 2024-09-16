@@ -50,11 +50,15 @@ function mapChildren (
   })
 }
 
+function DEFAULT_SELECT () {
+  //
+}
+
 export default function TabGroup (props) {
   const {
     children,
-    selectedTab,
-    onTabSelect
+    selectedTab = v4(),
+    onTabSelect = DEFAULT_SELECT
   } = props
 
   return (
@@ -71,9 +75,4 @@ TabGroup.propTypes = {
   ]).isRequired,
   selectedTab: PropTypes.string,
   onTabSelect: PropTypes.func
-}
-
-TabGroup.defaultProps = {
-  selectedTab: v4(),
-  onTabSelect () { }
 }
