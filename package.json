@@ -1,6 +1,6 @@
 {
   "name": "react-tab-set",
-  "version": "2.0.190",
+  "version": "2.0.191",
   "description": "A React Tab Set component",
   "main": "./src/index.mjs",
   "type": "module",
