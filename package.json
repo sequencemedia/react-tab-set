@@ -52,7 +52,7 @@
     "eslint-config-love": "47.0.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-react": "^7.37.1",
-    "eslint-plugin-storybook": "^0.9.0",
+    "eslint-plugin-storybook": "^0.10.1",
     "husky": "^9.1.6",
     "prop-types": "15.8.1",
     "react": "^18.3.1",
