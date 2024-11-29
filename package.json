@@ -19,7 +19,7 @@
   },
   "scripts": {
     "build-storybook": "storybook build",
-    "lint": "eslint . --ext .mjs,.cjs,.mts,.cts,.tsx",
+    "lint": "eslint . .storybook --ext .mjs,.cjs,.mts,.cts,.tsx",
     "lint:fix": "npm run lint -- --fix",
     "prepare": "husky",
     "storybook": "storybook dev -p 6006"
@@ -37,10 +37,9 @@
     "@babel/preset-react": "^7.25.9",
     "@babel/preset-typescript": "^7.26.0",
     "@babel/register": "^7.25.9",
-    "@storybook/addon-essentials": "^8.4.6",
-    "@storybook/addon-links": "^8.4.6",
-    "@storybook/react": "^8.4.6",
-    "@storybook/react-webpack5": "^8.4.6",
+    "@storybook/addon-essentials": "7.6.20",
+    "@storybook/react": "7.6.20",
+    "@storybook/react-webpack5": "7.6.20",
     "@types/debug": "^4.1.12",
     "@types/react": "^18.3.12",
     "@types/uuid": "^10.0.0",
@@ -54,10 +53,10 @@
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-storybook": "^0.11.1",
     "husky": "^9.1.7",
-    "prop-types": "15.8.1",
+    "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "storybook": "^8.4.6",
+    "storybook": "7.6.20",
     "typescript": "^5.7.2"
   },
   "exports": {
