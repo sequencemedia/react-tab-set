@@ -43,6 +43,9 @@ const reactSettings = {
 }
 
 export default [
+  /**
+   *  React config for all `jsx` and `tsx` files
+   */
   {
     files: [
       '**/*.tsx',
@@ -74,9 +77,13 @@ export default [
       }
     }
   }),
+  /**
+   *  Standard config for all `jsx` and `tsx` files
+   */
   ...standard({
     files: [
-      'stories/**/*.jsx'
+      '**/*.tsx',
+      '**/*.jsx'
     ],
     plugins: {
       react: reactPlugin
@@ -102,7 +109,8 @@ export default [
       '**/*.{mts,cts}'
     ],
     ignores: [
-      'src'
+      'src',
+      'stories'
     ],
     languageOptions: {
       globals: {
@@ -120,6 +128,9 @@ export default [
       }
     }
   }),
+  /**
+   *  TypeScript config for only `tsx` files
+   */
   ...typescript({
     files: [
       'src/**/*.tsx'
