@@ -1,5 +1,9 @@
-import Tab from './tab'
+import type {
+  JSX
+} from 'react'
 
-export default function isTab (component: any): component is Tab {
+import Tab from './tab/index.tsx'
+
+export default function isTab (component: JSX.Element['type']): boolean {
   return component === Tab
 }

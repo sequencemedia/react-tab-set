@@ -29,7 +29,7 @@ export default function TabPanel (props: TabPanelProps): JSX.Element | null {
       children = render()
     } = props
 
-    if (children) { // eslint-disable-line @typescript-eslint/strict-boolean-expressions
+    if (children) { // eslint-disable-line @typescript-eslint/strict-boolean-expressions -- Truthiness is good, actually
       return (
         <div className='tab-panel'>
           {children}

@@ -29,16 +29,16 @@ function mapChildren (
   selectedTab: string,
   onTabSelect: (value: React.SetStateAction<string>) => void
 ): JSX.Element[] {
-  return Children.map(children, (child) => {
-    const { type } = child
+  return Children.map(children, (child: JSX.Element) => {
+    const { type } = child // eslint-disable-line @typescript-eslint/no-unsafe-assignment -- Component
 
-    if (type) { // eslint-disable-line @typescript-eslint/strict-boolean-expressions
-      const { props } = child
+    if (type) { // eslint-disable-line @typescript-eslint/strict-boolean-expressions -- Truthiness is good, actually
+      const { props } = child // eslint-disable-line @typescript-eslint/no-unsafe-assignment -- Props
 
       if (isTabGroup(type)) {
         return cloneElement(
           child,
-          { // eslint-disable-line @typescript-eslint/no-unsafe-argument
+          { // eslint-disable-line @typescript-eslint/no-unsafe-argument -- Props
             ...props,
             selectedTab,
             onTabSelect
@@ -49,23 +49,21 @@ function mapChildren (
       if (isTabPanel(type)) {
         return cloneElement(
           child,
-          { // eslint-disable-line @typescript-eslint/no-unsafe-argument
+          { // eslint-disable-line @typescript-eslint/no-unsafe-argument -- Props
             ...props,
             selectedTab
           }
         )
       }
 
-      const {
-        children
-      } = props
+      const { children } = props // eslint-disable-line @typescript-eslint/no-unsafe-assignment -- Children are `JSX.Element` of `JSX.Element[]`
 
-      if (children) { // eslint-disable-line @typescript-eslint/strict-boolean-expressions
+      if (children) { // eslint-disable-line @typescript-eslint/strict-boolean-expressions -- Truthiness is good, actually
         return cloneElement(
           child,
-          { // eslint-disable-line @typescript-eslint/no-unsafe-argument
+          { // eslint-disable-line @typescript-eslint/no-unsafe-argument -- Props
             ...props,
-            children: mapChildren(children, selectedTab, onTabSelect) // eslint-disable-line @typescript-eslint/no-unsafe-argument
+            children: mapChildren(children, selectedTab, onTabSelect) // eslint-disable-line @typescript-eslint/no-unsafe-argument -- Children are `JSX.Element` of `JSX.Element[]`
           }
         )
       }
