@@ -1,6 +1,6 @@
 import globals from 'globals'
-import standard from '@sequencemedia/eslint-config-standard/merge'
-import typescript from '@sequencemedia/eslint-config-typescript/merge'
+import standard from '@sequencemedia/eslint-config-standard/merge/recommended'
+import typescript from '@sequencemedia/eslint-config-typescript/merge/recommended'
 import babelParser from '@babel/eslint-parser'
 import typescriptParser from '@typescript-eslint/parser'
 import reactPlugin from 'eslint-plugin-react'
@@ -9,6 +9,10 @@ const reactParserOptions = {
   ecmaFeatures: {
     jsx: true
   }
+}
+
+const reactPlugins = {
+  react: reactPlugin
 }
 
 const reactRules = {
@@ -47,13 +51,12 @@ export default [
    *  React config for all `jsx` and `tsx` files
    */
   {
+    ...reactPlugin.configs.flat.recommended,
     files: [
-      '**/*.tsx',
-      '**/*.jsx'
-    ],
-    ...reactPlugin.configs.flat.recommended
+      '**/*.{jsx,tsx}'
+    ]
   },
-  ...standard({
+  standard({
     files: [
       '**/*.{mjs,cjs}'
     ],
@@ -67,7 +70,7 @@ export default [
       }
     }
   }),
-  ...standard({
+  standard({
     files: [
       'src/**/*.{mjs,cjs}'
     ],
@@ -80,14 +83,10 @@ export default [
   /**
    *  Standard config for all `jsx` and `tsx` files
    */
-  ...standard({
+  standard({
     files: [
-      '**/*.tsx',
-      '**/*.jsx'
+      '**/*.{jsx,tsx}'
     ],
-    plugins: {
-      react: reactPlugin
-    },
     languageOptions: {
       parser: babelParser,
       parserOptions: {
@@ -97,6 +96,9 @@ export default [
         ...globals.browser
       }
     },
+    plugins: {
+      ...reactPlugins
+    },
     rules: {
       ...reactRules
     },
@@ -104,7 +106,7 @@ export default [
       ...reactSettings
     }
   }),
-  ...typescript({
+  typescript({
     files: [
       '**/*.{mts,cts}'
     ],
@@ -118,7 +120,7 @@ export default [
       }
     }
   }),
-  ...typescript({
+  typescript({
     files: [
       'src/**/*.{mts,cts}'
     ],
@@ -131,13 +133,10 @@ export default [
   /**
    *  TypeScript config for only `tsx` files
    */
-  ...typescript({
+  typescript({
     files: [
       'src/**/*.tsx'
     ],
-    plugins: {
-      react: reactPlugin
-    },
     languageOptions: {
       parser: typescriptParser,
       parserOptions: {
@@ -147,6 +146,9 @@ export default [
       globals: {
         ...globals.browser
       }
+    },
+    plugins: {
+      ...reactPlugins
     },
     rules: {
       ...reactRules
