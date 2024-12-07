@@ -1,5 +1,7 @@
 import React from 'react'
-import { action } from '@storybook/addon-actions'
+import {
+  action
+} from '@storybook/addon-actions'
 
 import TabSet from 'react-tab-set'
 import TabGroup from 'react-tab-set/tab-set/tab-group'
@@ -7,7 +9,7 @@ import Tab from 'react-tab-set/tab-set/tab-group/tab'
 import TabPanel from 'react-tab-set/tab-set/tab-panel'
 
 function Component (props) {
-  return ( // eslint-disable-line react/prop-types
+  return (
     <TabSet {...props} onChange={action('onChange')}>
       <TabGroup>
         <Tab tab='one'>
@@ -34,7 +36,7 @@ export default {
     selectedTab: {
       options: ['one', 'two'],
       control: { type: 'radio' },
-      description: 'selectedTab',
+      description: 'selectedTab'
     }
   }
 }
@@ -44,4 +46,3 @@ export const ComponentStory = {
     selectedTab: 'one'
   }
 }
-

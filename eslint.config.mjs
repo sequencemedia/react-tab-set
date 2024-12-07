@@ -1,16 +1,62 @@
 import globals from 'globals'
 import standard from '@sequencemedia/eslint-config-standard/merge'
 import typescript from '@sequencemedia/eslint-config-typescript/merge'
-import parser from '@typescript-eslint/parser'
-import react from 'eslint-plugin-react'
+import babelParser from '@babel/eslint-parser'
+import typescriptParser from '@typescript-eslint/parser'
+import reactPlugin from 'eslint-plugin-react'
+
+const reactParserOptions = {
+  ecmaFeatures: {
+    jsx: true
+  }
+}
+
+const reactRules = {
+  'no-unused-vars': [
+    'error',
+    {
+      varsIgnorePattern: 'React'
+    }
+  ],
+  quotes: [
+    'error',
+    'single'
+  ],
+  'jsx-quotes': [
+    'error',
+    'prefer-single'
+  ],
+  'react/jsx-indent': [
+    'error',
+    2,
+    {
+      checkAttributes: true,
+      indentLogicalExpressions: true
+    }
+  ]
+}
+
+const reactSettings = {
+  react: {
+    version: 'detect'
+  }
+}
 
 export default [
+  {
+    files: [
+      '**/*.tsx',
+      '**/*.jsx'
+    ],
+    ...reactPlugin.configs.flat.recommended
+  },
   ...standard({
     files: [
       '**/*.{mjs,cjs}'
     ],
     ignores: [
-      'src'
+      'src',
+      'stories'
     ],
     languageOptions: {
       globals: {
@@ -26,6 +72,29 @@ export default [
       globals: {
         ...globals.browser
       }
+    }
+  }),
+  ...standard({
+    files: [
+      'stories/**/*.jsx'
+    ],
+    plugins: {
+      react: reactPlugin
+    },
+    languageOptions: {
+      parser: babelParser,
+      parserOptions: {
+        ...reactParserOptions
+      },
+      globals: {
+        ...globals.browser
+      }
+    },
+    rules: {
+      ...reactRules
+    },
+    settings: {
+      ...reactSettings
     }
   }),
   ...typescript({
@@ -56,19 +125,23 @@ export default [
       'src/**/*.tsx'
     ],
     plugins: {
-      react
+      react: reactPlugin
     },
     languageOptions: {
-      parser,
+      parser: typescriptParser,
       parserOptions: {
-        project: 'tsconfig.json',
-        ecmaFeatures: {
-          jsx: true
-        }
+        ...reactParserOptions,
+        project: 'tsconfig.json'
       },
       globals: {
         ...globals.browser
       }
+    },
+    rules: {
+      ...reactRules
+    },
+    settings: {
+      ...reactSettings
     }
   })
 ]
