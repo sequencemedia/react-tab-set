@@ -56,6 +56,9 @@ export default [
       '**/*.{jsx,tsx}'
     ]
   },
+  /**
+   *  Standard config
+   */
   standard({
     files: [
       '**/*.{mjs,cjs}'
@@ -107,6 +110,9 @@ export default [
       ...reactSettings
     }
   }),
+  /**
+   *  TypeScript config
+   */
   typescript({
     files: [
       '**/*.{mts,cts}'
