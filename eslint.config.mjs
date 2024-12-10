@@ -4,6 +4,7 @@ import typescript from '@sequencemedia/eslint-config-typescript/configs/recommen
 import babelParser from '@babel/eslint-parser'
 import typescriptParser from '@typescript-eslint/parser'
 import reactPlugin from 'eslint-plugin-react'
+import storybookPlugin from 'eslint-plugin-storybook'
 
 const reactParserOptions = {
   ecmaFeatures: {
@@ -13,6 +14,10 @@ const reactParserOptions = {
 
 const reactPlugins = {
   react: reactPlugin
+}
+
+const storybookPlugins = {
+  storybook: storybookPlugin
 }
 
 const reactRules = {
@@ -52,10 +57,15 @@ export default [
    */
   {
     ...reactPlugin.configs.flat.recommended,
-    files: [
-      '**/*.{jsx,tsx}'
-    ]
+    settings: {
+      ...reactPlugin.configs.flat.recommended.settings,
+      ...reactSettings
+    }
   },
+  /**
+   *  Storybook config
+   */
+  ...storybookPlugin.configs['flat/recommended'],
   /**
    *  Standard config
    */
@@ -101,13 +111,17 @@ export default [
       }
     },
     plugins: {
-      ...reactPlugins
+      ...reactPlugins,
+      ...storybookPlugins
     },
     rules: {
       ...reactRules
     },
     settings: {
-      ...reactSettings
+      ...reactSettings,
+      'import/resolver': {
+        'babel-module': {}
+      }
     }
   }),
   /**

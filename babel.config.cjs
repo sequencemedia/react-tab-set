@@ -38,10 +38,21 @@ const presets = [
   ]
 ]
 
+const plugins = [
+  [
+    'module-resolver', {
+      alias: {
+        'react-tab-set': './src'
+      }
+    }
+  ]
+]
+
 module.exports = (api) => {
   if (api) api.cache.using(env)
 
   return {
-    presets
+    presets,
+    plugins
   }
 }
