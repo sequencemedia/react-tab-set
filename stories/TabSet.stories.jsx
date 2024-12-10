@@ -3,7 +3,7 @@ import {
   action
 } from '@storybook/addon-actions'
 
-import TabSet from 'react-tab-set'
+import TabSet from 'react-tab-set/tab-set'
 import TabGroup from 'react-tab-set/tab-set/tab-group'
 import Tab from 'react-tab-set/tab-set/tab-group/tab'
 import TabPanel from 'react-tab-set/tab-set/tab-panel'

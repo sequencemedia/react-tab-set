@@ -71,7 +71,7 @@ export default [
    */
   standard({
     files: [
-      '**/*.{mjs,cjs}'
+      '**/*.{mjs,cjs,mts,cts}'
     ],
     ignores: [
       'src',
@@ -85,7 +85,8 @@ export default [
   }),
   standard({
     files: [
-      'src/**/*.{mjs,cjs}'
+      'src/**/*.{mjs,cjs,mts,cts}',
+      'stories/**/*.{mjs,cjs,mts,cts}'
     ],
     languageOptions: {
       globals: {
@@ -98,7 +99,8 @@ export default [
    */
   standard({
     files: [
-      '**/*.{jsx,tsx}'
+      'src/**/*.tsx',
+      'stories/**/*.jsx'
     ],
     languageOptions: {
       parser: babelParser,
@@ -132,8 +134,7 @@ export default [
       '**/*.{mts,cts}'
     ],
     ignores: [
-      'src',
-      'stories'
+      'src'
     ],
     languageOptions: {
       globals: {
@@ -162,6 +163,7 @@ export default [
       parser: typescriptParser,
       parserOptions: {
         ...reactParserOptions,
+        projectService: true,
         project: 'tsconfig.json'
       },
       globals: {

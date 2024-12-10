@@ -4,6 +4,7 @@
   "description": "A React Tab Set component",
   "main": "./src/index.mjs",
   "type": "module",
+  "types": "./src/index.mts",
   "author": {
     "name": "Jonathan Perry for Sequence Media Limited",
     "email": "sequencemedia@sequencemedia.net",
@@ -60,6 +61,13 @@
     "react-dom": "^18.3.1",
     "storybook": "7.6.20",
     "typescript": "^5.7.2"
+  },
+  "imports": {
+    "#react-tab-set": "./src/index.mjs",
+    "#react-tab-set/tab-set": "./src/tab-set/index.jsx",
+    "#react-tab-set/tab-set/tab-group": "./src/tab-set/tab-group/index.jsx",
+    "#react-tab-set/tab-set/tab-group/tab": "./src/tab-set/tab-group/tab/index.jsx",
+    "#react-tab-set/tab-set/tab-panel": "./src/tab-set/tab-panel/index.jsx"
   },
   "exports": {
     ".": {

@@ -42,6 +42,9 @@ const plugins = [
   [
     'module-resolver', {
       alias: {
+        /**
+         *  ESlint for Storybook `jsx`
+         */
         'react-tab-set': './src'
       }
     }
