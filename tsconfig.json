@@ -12,6 +12,7 @@
     "baseUrl": "."
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    ".storybook/**/*"
   ]
 }
