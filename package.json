@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "debug": "^4.4.0",
-    "uuid": "^11.0.4"
+    "uuid": "^11.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
