@@ -1,18 +1,18 @@
 {
   "compilerOptions": {
-    "jsx": "react",
     "module": "NodeNext",
     "target": "ESNext",
-    "moduleResolution": "NodeNext",
     "noEmit": true,
     "strict": true,
-    "isolatedModules": true,
-    "noImplicitAny": true,
     "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "moduleResolution": "NodeNext",
+    "noImplicitAny": true,
+    "jsx": "react",
     "baseUrl": "."
   },
   "include": [
-    "src/**/*",
-    ".storybook/**/*"
+    ".storybook/**/*",
+    "src/**/*"
   ]
 }
