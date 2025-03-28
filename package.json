@@ -62,8 +62,8 @@
     "globals": "^16.0.0",
     "husky": "^9.1.7",
     "prop-types": "^15.8.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "storybook": "^8.6.11",
     "typescript": "^5.8.2"
   },
