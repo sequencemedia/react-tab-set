@@ -64,6 +64,9 @@
     "storybook": "^9.0.5",
     "typescript": "^5.8.3"
   },
+  "overrides": {
+    "storybook": "$storybook"
+  },
   "imports": {
     "#react-tab-set": "./src/index.mjs",
     "#react-tab-set/tab-set": "./src/tab-set/index.jsx",
@@ -100,8 +103,5 @@
       "require": "./src/tab-set/tab-panel/index.cjs",
       "import": "./src/tab-set/tab-panel/index.mjs"
     }
-  },
-  "overrides": {
-    "storybook": "$storybook"
   }
 }
