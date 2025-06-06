@@ -1,7 +1,7 @@
 import React from 'react'
 import {
   action
-} from '@storybook/addon-actions'
+} from 'storybook/actions'
 
 import TabSet from 'react-tab-set'
 import TabGroup from 'react-tab-set/tab-set/tab-group'
