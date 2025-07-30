@@ -46,7 +46,7 @@
     "@storybook/addon-webpack5-compiler-babel": "^3.0.6",
     "@storybook/react-webpack5": "^9.0.18",
     "@types/debug": "^4.1.12",
-    "@types/react": "^19.1.8",
+    "@types/react": "^19.1.9",
     "@types/uuid": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^8.38.0",
     "@typescript-eslint/parser": "^8.38.0",
