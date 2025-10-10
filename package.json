@@ -51,7 +51,7 @@
     "@typescript-eslint/eslint-plugin": "^8.46.0",
     "@typescript-eslint/parser": "^8.46.0",
     "babel-plugin-module-resolver": "^5.0.2",
-    "core-js": "^3.45.1",
+    "core-js": "^3.46.0",
     "eslint": "^9.37.0",
     "eslint-import-resolver-babel-module": "^5.3.2",
     "eslint-plugin-react": "^7.37.5",
