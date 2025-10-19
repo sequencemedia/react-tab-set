@@ -40,7 +40,7 @@
     "@babel/register": "^7.28.3",
     "@chromatic-com/storybook": "^4.1.1",
     "@sequencemedia/eslint-config-standard": "^0.2.94",
-    "@sequencemedia/eslint-config-typescript": "^0.1.161",
+    "@sequencemedia/eslint-config-typescript": "^0.1.162",
     "@storybook/addon-docs": "^9.1.13",
     "@storybook/addon-links": "^9.1.13",
     "@storybook/addon-webpack5-compiler-babel": "^3.0.6",
