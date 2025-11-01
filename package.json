@@ -23,7 +23,8 @@
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
     "prepare": "husky",
-    "storybook": "storybook dev -p 6006"
+    "storybook": "storybook dev -p 6006",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "debug": "^4.4.3",
@@ -62,7 +63,7 @@
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "storybook": "^10.0.2",
-    "typescript": "5.8.3"
+    "typescript": "^5.9.3"
   },
   "overrides": {
     "storybook": "$storybook"
