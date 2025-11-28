@@ -163,8 +163,7 @@ export default [
       parser: typescriptParser,
       parserOptions: {
         ...reactParserOptions,
-        projectService: true,
-        project: 'tsconfig.json'
+        projectService: true
       },
       globals: {
         ...globals.browser
