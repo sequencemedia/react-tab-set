@@ -9,8 +9,7 @@
     "moduleResolution": "NodeNext",
     "noImplicitAny": true,
     "skipLibCheck": true,
-    "jsx": "react",
-    "baseUrl": "."
+    "jsx": "react"
   },
   "include": [
     "src"
