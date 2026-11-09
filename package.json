@@ -104,5 +104,9 @@
       "require": "./src/tab-set/tab-panel/index.cjs",
       "import": "./src/tab-set/tab-panel/index.mjs"
     }
+  },
+  "allowScripts": {
+    "core-js@3.51.0": true,
+    "esbuild@0.28.2": true
   }
 }
