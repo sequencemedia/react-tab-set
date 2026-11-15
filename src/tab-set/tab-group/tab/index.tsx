@@ -36,7 +36,7 @@ export default function Tab (props: TabProps): JSX.Element {
 
   const handleClick = useCallback(function onClick (): void {
     onTabSelect(tab)
-  }, [tab])
+  }, [onTabSelect, tab])
 
   return (
     <li

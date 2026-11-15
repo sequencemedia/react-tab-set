@@ -87,9 +87,9 @@ export default function TabSet (props: TabSetProps): JSX.Element {
 
   useEffect(() => {
     if (selectedTab !== tab) {
-      setSelectedTab(tab)
+      setSelectedTab(tab) // eslint-disable-line @eslint-react/set-state-in-effect -- State
     }
-  }, [tab])
+  }, [selectedTab, tab])
 
   useEffect(() => {
     if (selectedTab !== tab) {
@@ -103,7 +103,7 @@ export default function TabSet (props: TabSetProps): JSX.Element {
         error('Error `onChange`')
       }
     }
-  }, [selectedTab])
+  }, [selectedTab, tab]) // eslint-disable-line @eslint-react/exhaustive-deps -- Props
 
   return (
     <div className='selectedTab-set'>
