@@ -40,7 +40,8 @@ const presets = [
 
 const plugins = [
   [
-    'module-resolver', {
+    'module-resolver',
+    {
       alias: {
         /**
          *  ESlint for Storybook `jsx`
